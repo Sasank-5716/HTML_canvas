@@ -63,3 +63,7 @@ function startDrawing(e) {
     lastX = x;
     lastY = y;
   }
+
+  function clearCanvas() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+  }
