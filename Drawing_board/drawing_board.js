@@ -21,3 +21,21 @@ canvas.addEventListener('touchmove', handleTouchMove);
 canvas.addEventListener('touchend', stopDrawing);
 
 clearBtn.addEventListener('click', clearCanvas);
+
+function startDrawing(e) {
+    isDrawing = true;
+    [lastX, lastY] = [e.offsetX, e.offsetY];
+  }
+  
+  function draw(e) {
+    if (!isDrawing) return;
+    ctx.beginPath();
+    ctx.moveTo(lastX, lastY);
+    ctx.lineTo(e.offsetX, e.offsetY);
+    ctx.stroke();
+    [lastX, lastY] = [e.offsetX, e.offsetY];
+  }
+  
+  function stopDrawing() {
+    isDrawing = false;
+  }
