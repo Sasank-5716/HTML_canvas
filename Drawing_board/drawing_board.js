@@ -1,15 +1,37 @@
 const canvas = document.getElementById('drawingBoard');
 const ctx = canvas.getContext('2d');
+
+const colorPicker = document.getElementById('colorPicker');
+const eraserBtn = document.getElementById('eraserBtn');
+const brushSize = document.getElementById('brushSize');
 const clearBtn = document.getElementById('clearBtn');
 
 let isDrawing = false;
+let isEraser = false;
 let lastX = 0;
 let lastY = 0;
 
-ctx.strokeStyle = '#000000';
-ctx.lineWidth = 5;
+ctx.strokeStyle = colorPicker.value;
+ctx.lineWidth = brushSize.value;
 ctx.lineCap = 'round';
 ctx.lineJoin = 'round';
+
+// UPDATED: Color picker event
+colorPicker.addEventListener('change', () => {
+  if (!isEraser) ctx.strokeStyle = colorPicker.value;
+});
+
+// UPDATED: Eraser button event
+eraserBtn.addEventListener('click', () => {
+  isEraser = !isEraser;
+  eraserBtn.classList.toggle('active');
+  ctx.strokeStyle = isEraser ? '#FFFFFF' : colorPicker.value;
+});
+
+// UPDATED: Brush size event
+brushSize.addEventListener('input', () => {
+  ctx.lineWidth = brushSize.value;
+});
 
 canvas.addEventListener('mousedown', startDrawing);
 canvas.addEventListener('mousemove', draw);
