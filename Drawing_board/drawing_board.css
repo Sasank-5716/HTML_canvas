@@ -36,3 +36,14 @@ body {
   #brushSize {
     width: 120px;
   }
+  .control-group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+    margin-right: 15px;
+  }
+  .control-group label {
+    font-size: 14px;
+    color: #333;
+  }
