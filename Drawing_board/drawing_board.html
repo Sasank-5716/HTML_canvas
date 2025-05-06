@@ -7,6 +7,12 @@
 </head>
 <body>
   <h1>Drawing Board</h1>
+  <div class="controls">
+    <input type="color" id="colorPicker" value="#000000">
+    <button id="eraserBtn">Eraser</button>
+    <input type="range" id="brushSize" min="1" max="50" value="5">
+    <button id="clearBtn">Clear Canvas</button>
+  </div>
   <canvas id="drawingBoard" width="800" height="600"></canvas>
   <button id="clearBtn">Clear Canvas</button>
   <script src="drawing_board.js"></script>
