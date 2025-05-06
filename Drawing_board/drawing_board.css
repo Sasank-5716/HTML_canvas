@@ -22,3 +22,17 @@ body {
   button:hover {
     background: #45a049;
   }
+  .controls { 
+    display: flex;
+    gap: 15px;
+    align-items: center;
+    margin-bottom: 15px;
+  }
+  
+  #eraserBtn.active {
+    background: #f44336 !important;
+  }
+  
+  #brushSize {
+    width: 120px;
+  }
