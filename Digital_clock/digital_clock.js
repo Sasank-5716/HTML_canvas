@@ -34,26 +34,33 @@ function drawClock() {
     // Draw background
     ctx.fillStyle = "#222";
     ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-    ctx.font = "bold 80px monospace";
+     
+    // Draw country label
+    ctx.font = "18px monospace";
+    ctx.fillStyle = "#aaa";
     ctx.textAlign = "center";
-    ctx.textBaseline = "middle";
+    ctx.textBaseline = "top";
+    ctx.fillText(countryLabel, canvas.width / 2, 30);
+     
+    // Draw time (middle)
+    ctx.font = "bold 60px monospace"; // Smaller font for more space
     ctx.fillStyle = "#00FF99";
-    ctx.fillText(timeOnly, canvas.width / 2, canvas.height / 2 - 20);
+    ctx.textBaseline = "middle";
+    ctx.fillText(timeOnly, canvas.width / 2, canvas.height / 2);
 
-    ctx.font = "bold 28px monospace";
+    // Draw time zone abbreviation (below time)
+    ctx.font = "bold 24px monospace";
     ctx.fillStyle = "#FFD700";
-    ctx.fillText(tzAbbr ? tzAbbr[1] : "", canvas.width / 2, canvas.height / 2 + 40);
+    ctx.textBaseline = "top";
+    ctx.fillText(tzAbbr ? tzAbbr[1] : "", canvas.width / 2, canvas.height / 2 + 35);
   
     // Draw date
     ctx.font = "20px monospace";
     ctx.fillStyle = "#fff";
-    ctx.fillText(dateString, canvas.width / 2, canvas.height - 40);
+    ctx.textBaseline = "bottom";
+    ctx.fillText(dateString, canvas.width / 2, canvas.height - 20);
   
-    // Draw country label
-    ctx.font = "18px monospace";
-    ctx.fillStyle = "#aaa";
-    ctx.fillText(countryLabel, canvas.width / 2, 30);
+   
   }
 
 setInterval(drawClock, 1000);
