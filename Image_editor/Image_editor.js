@@ -22,3 +22,14 @@ document.getElementById('upload').addEventListener('change', function(e) {
     };
     reader.readAsDataURL(file);
   });
+
+  // Grayscale filter
+function applyGrayscale() {
+    if (!imgData) return;
+    let data = imgData.data;
+    for (let i = 0; i < data.length; i += 4) {
+      let avg = (data[i] + data[i + 1] + data[i + 2]) / 3;
+      data[i] = data[i + 1] = data[i + 2] = avg;
+    }
+    ctx.putImageData(imgData, 0, 0);
+  }
