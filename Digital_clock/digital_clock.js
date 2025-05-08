@@ -60,7 +60,11 @@ function drawClock() {
     ctx.textBaseline = "bottom";
     ctx.fillText(dateString, canvas.width / 2, canvas.height - 20);
   
-   
+    ctx.font = "14px monospace";
+    ctx.fillStyle = "#888";
+    ctx.textAlign = "right";
+    ctx.textBaseline = "bottom";
+    ctx.fillText("Created By Sasank Lama", canvas.width - 10, canvas.height - 5);
   }
 
 setInterval(drawClock, 1000);
