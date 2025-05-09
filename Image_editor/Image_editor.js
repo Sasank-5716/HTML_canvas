@@ -55,3 +55,23 @@ function cropImage() {
   ctx.putImageData(cropped, 0, 0);
   imgData = ctx.getImageData(0, 0, cropWidth, cropHeight); // update stored data
 }
+
+function rotateImage() {
+  if (!img.src) return;
+  angle = (angle + 90) % 360;
+  // Swap width and height for 90/270 degree rotation
+  const tempCanvas = document.createElement('canvas');
+  const tempCtx = tempCanvas.getContext('2d');
+  tempCanvas.width = canvas.height;
+  tempCanvas.height = canvas.width;
+  tempCtx.save();
+  tempCtx.translate(tempCanvas.width / 2, tempCanvas.height / 2);
+  tempCtx.rotate(angle * Math.PI / 180);
+  tempCtx.drawImage(canvas, -canvas.width / 2, -canvas.height / 2);
+  tempCtx.restore();
+  canvas.width = tempCanvas.width;
+  canvas.height = tempCanvas.height;
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  ctx.drawImage(tempCanvas, 0, 0);
+  imgData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+}
