@@ -24,16 +24,27 @@ document.getElementById('upload').addEventListener('change', function(e) {
   });
 
   // Grayscale filter
-function applyGrayscale() {
+  let originalImgData = null; // Stores original pixel data
+  let isGrayscale = false;
+  
+  function applyGrayscale() {
     if (!imgData) return;
-    let data = imgData.data;
-    for (let i = 0; i < data.length; i += 4) {
-      let avg = (data[i] + data[i + 1] + data[i + 2]) / 3;
-      data[i] = data[i + 1] = data[i + 2] = avg;
+    if (!isGrayscale) {
+      // Apply grayscale
+      let data = imgData.data;
+      for (let i = 0; i < data.length; i += 4) {
+        const avg = (data[i] + data[i+1] + data[i+2]) / 3;
+        data[i] = data[i+1] = data[i+2] = avg;
+      }
+      ctx.putImageData(imgData, 0, 0);
+      isGrayscale = true;
+    } else {
+      // Restore original
+      ctx.putImageData(originalImgData, 0, 0);
+      isGrayscale = false;
     }
-    ctx.putImageData(imgData, 0, 0);
   }
-
+  
   // Invert filter
 function applyInvert() {
   if (!imgData) return;
