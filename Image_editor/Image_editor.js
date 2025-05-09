@@ -75,3 +75,14 @@ function rotateImage() {
   ctx.drawImage(tempCanvas, 0, 0);
   imgData = ctx.getImageData(0, 0, canvas.width, canvas.height);
 }
+
+// Keyboard rotation
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'ArrowLeft') {
+    angle = (angle - 90 + 360) % 360;
+    rotateImage();
+  } else if (e.key === 'ArrowRight') {
+    angle = (angle + 90) % 360;
+    rotateImage();
+  }
+});
