@@ -45,3 +45,13 @@ function applyInvert() {
   }
   ctx.putImageData(imgData, 0, 0);
 }
+
+function cropImage() {
+  if (!imgData) return;
+  const cropWidth = 100, cropHeight = 100;
+  const cropped = ctx.getImageData(0, 0, cropWidth, cropHeight);
+  canvas.width = cropWidth;
+  canvas.height = cropHeight;
+  ctx.putImageData(cropped, 0, 0);
+  imgData = ctx.getImageData(0, 0, cropWidth, cropHeight); // update stored data
+}
