@@ -3,6 +3,7 @@ const ctx = canvas.getContext('2d');
 let img = new Image();
 let angle = 0;
 let imgData = null;
+let isInverted = false;
 
 // Handle image upload
 document.getElementById('upload').addEventListener('change', function(e) {
@@ -54,19 +55,36 @@ document.getElementById('upload').addEventListener('change', function(e) {
   
   // Invert filter
 function applyInvert() {
-  if (!imgData) return;
-  let data = imgData.data;
-  for (let i = 0; i < data.length; i += 4) {
-    data[i] = 255 - data[i];       // R
-    data[i + 1] = 255 - data[i+1]; // G
-    data[i + 2] = 255 - data[i+2]; // B
+  if (!imgLoaded) return;
+
+  if (!isInverted) {
+    // Apply invert filter on current image data
+    let data = new Uint8ClampedArray(currentImgData.data);
+    for (let i = 0; i < data.length; i += 4) {
+      data[i] = 255 - data[i];       // R
+      data[i + 1] = 255 - data[i + 1]; // G
+      data[i + 2] = 255 - data[i + 2]; // B
+    }
+    const invertedImgData = new ImageData(data, canvas.width, canvas.height);
+    ctx.putImageData(invertedImgData, 0, 0);
+    currentImgData = invertedImgData;
+    isInverted = true;
+  } else {
+    // Restore original or last non-inverted image data
+    ctx.putImageData(originalImgData, 0, 0);
+    currentImgData = originalImgData;
+    isInverted = false;
   }
-  ctx.putImageData(imgData, 0, 0);
+  // Reset grayscale toggle because image changed
+  isGrayscale = false;
 }
 
+// Variables for cropping
 let isCropping = false;
-let cropStartX = 0, cropStartY = 0, cropEndX = 0, cropEndY = 0;
+let cropStartX = 0, cropStartY = 0;
+let cropEndX = 0, cropEndY = 0;
 
+// Start cropping on mouse down
 canvas.addEventListener('mousedown', (e) => {
   if (!imgLoaded) return;
   isCropping = true;
@@ -75,14 +93,17 @@ canvas.addEventListener('mousedown', (e) => {
   cropStartY = e.clientY - rect.top;
 });
 
+// Draw crop rectangle on mouse move
 canvas.addEventListener('mousemove', (e) => {
   if (!isCropping) return;
   const rect = canvas.getBoundingClientRect();
   cropEndX = e.clientX - rect.left;
   cropEndY = e.clientY - rect.top;
 
-  // Redraw image and draw crop rectangle
+  // Redraw current image
   ctx.putImageData(currentImgData, 0, 0);
+
+  // Draw dashed red rectangle for crop area
   ctx.strokeStyle = 'red';
   ctx.lineWidth = 2;
   ctx.setLineDash([6]);
@@ -95,6 +116,7 @@ canvas.addEventListener('mousemove', (e) => {
   ctx.setLineDash([]);
 });
 
+// On mouse up, perform the crop
 canvas.addEventListener('mouseup', () => {
   if (!isCropping) return;
   isCropping = false;
@@ -104,19 +126,23 @@ canvas.addEventListener('mouseup', () => {
   let width = Math.abs(cropEndX - cropStartX);
   let height = Math.abs(cropEndY - cropStartY);
 
+  // Ignore tiny crop areas
   if (width < 5 || height < 5) {
-    ctx.putImageData(currentImgData, 0, 0); // Clear rectangle if too small
+    ctx.putImageData(currentImgData, 0, 0); // Clear rectangle
     return;
   }
 
+  // Get cropped image data and resize canvas
   const croppedData = ctx.getImageData(x, y, width, height);
   canvas.width = width;
   canvas.height = height;
   ctx.putImageData(croppedData, 0, 0);
 
+  // Update stored image data
   originalImgData = ctx.getImageData(0, 0, canvas.width, canvas.height);
   currentImgData = originalImgData;
   isGrayscale = false;
+  isInverted = false;
 });
 
 
