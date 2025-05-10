@@ -31,20 +31,24 @@ document.getElementById('upload').addEventListener('change', function(e) {
   let isGrayscale = false;
   
   function applyGrayscale() {
-    if (!imgData) return;
-    if (!isGrayscale) {
-      // Apply grayscale
-      let data = imgData.data;
-      for (let i = 0; i < data.length; i += 4) {
-        const avg = (data[i] + data[i+1] + data[i+2]) / 3;
-        data[i] = data[i+1] = data[i+2] = avg;
-      }
-      ctx.putImageData(imgData, 0, 0);
-      isGrayscale = true;
-    } else {
-      // Restore original
-      ctx.putImageData(originalImgData, 0, 0);
-      isGrayscale = false;
+  if (!imgLoaded) return;
+
+  if (!isGrayscale) {
+    // Apply grayscale on current image data copy
+    let data = new Uint8ClampedArray(currentImgData.data);
+    for (let i = 0; i < data.length; i += 4) {
+      const avg = (data[i] + data[i + 1] + data[i + 2]) / 3;
+      data[i] = data[i + 1] = data[i + 2] = avg;
+    }
+    const grayImgData = new ImageData(data, canvas.width, canvas.height);
+    ctx.putImageData(grayImgData, 0, 0);
+    currentImgData = grayImgData;
+    isGrayscale = true;
+  } else {
+    // Restore original image data
+    ctx.putImageData(originalImgData, 0, 0);
+    currentImgData = originalImgData;
+    isGrayscale = false;
     }
   }
   
