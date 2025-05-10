@@ -64,15 +64,61 @@ function applyInvert() {
   ctx.putImageData(imgData, 0, 0);
 }
 
-function cropImage() {
-  if (!imgData) return;
-  const cropWidth = 100, cropHeight = 100;
-  const cropped = ctx.getImageData(0, 0, cropWidth, cropHeight);
-  canvas.width = cropWidth;
-  canvas.height = cropHeight;
-  ctx.putImageData(cropped, 0, 0);
-  imgData = ctx.getImageData(0, 0, cropWidth, cropHeight); // update stored data
-}
+let isCropping = false;
+let cropStartX = 0, cropStartY = 0, cropEndX = 0, cropEndY = 0;
+
+canvas.addEventListener('mousedown', (e) => {
+  if (!imgLoaded) return;
+  isCropping = true;
+  const rect = canvas.getBoundingClientRect();
+  cropStartX = e.clientX - rect.left;
+  cropStartY = e.clientY - rect.top;
+});
+
+canvas.addEventListener('mousemove', (e) => {
+  if (!isCropping) return;
+  const rect = canvas.getBoundingClientRect();
+  cropEndX = e.clientX - rect.left;
+  cropEndY = e.clientY - rect.top;
+
+  // Redraw image and draw crop rectangle
+  ctx.putImageData(currentImgData, 0, 0);
+  ctx.strokeStyle = 'red';
+  ctx.lineWidth = 2;
+  ctx.setLineDash([6]);
+  ctx.strokeRect(
+    Math.min(cropStartX, cropEndX),
+    Math.min(cropStartY, cropEndY),
+    Math.abs(cropEndX - cropStartX),
+    Math.abs(cropEndY - cropStartY)
+  );
+  ctx.setLineDash([]);
+});
+
+canvas.addEventListener('mouseup', () => {
+  if (!isCropping) return;
+  isCropping = false;
+
+  let x = Math.min(cropStartX, cropEndX);
+  let y = Math.min(cropStartY, cropEndY);
+  let width = Math.abs(cropEndX - cropStartX);
+  let height = Math.abs(cropEndY - cropStartY);
+
+  if (width < 5 || height < 5) {
+    ctx.putImageData(currentImgData, 0, 0); // Clear rectangle if too small
+    return;
+  }
+
+  const croppedData = ctx.getImageData(x, y, width, height);
+  canvas.width = width;
+  canvas.height = height;
+  ctx.putImageData(croppedData, 0, 0);
+
+  originalImgData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+  currentImgData = originalImgData;
+  isGrayscale = false;
+});
+
 
 function rotateImage() {
   if (!img.src) return;
