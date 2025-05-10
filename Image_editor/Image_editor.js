@@ -16,7 +16,10 @@ document.getElementById('upload').addEventListener('change', function(e) {
         canvas.height = img.height;
         ctx.clearRect(0, 0, canvas.width, canvas.height);
         ctx.drawImage(img, 0, 0);
-        imgData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+        originalImgData = ctx.getImageData(0, 0, canvas.width, canvas.height); // Save original
+        currentImgData = ctx.getImageData(0, 0, canvas.width, canvas.height);  // Current working copy
+        isGrayscale = false;
+        imgLoaded = true;
       };
       img.src = event.target.result;
     };
