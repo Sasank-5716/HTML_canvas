@@ -10,3 +10,14 @@ const CONFIG = {
     MOUSE_RADIUS: 100,
     MOUSE_FORCE: 0.02
 };
+
+// State
+let particles = [];
+let mouse = { x: null, y: null, pressed: false };
+
+// Canvas setup
+function initCanvas() {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+}
+initCanvas();
