@@ -46,3 +46,34 @@ class Particle {
                 this.vy += Math.sin(angle) * force;
             }
         }
+        // Physics
+        this.vy += CONFIG.GRAVITY;
+        this.vx *= CONFIG.FRICTION;
+        this.vy *= CONFIG.FRICTION;
+        
+        // Movement
+        this.x += this.vx;
+        this.y += this.vy;
+
+        // Collision with walls
+        this.handleBoundaries();
+    }
+
+    handleBoundaries() {
+        if (this.x < this.radius) {
+            this.x = this.radius;
+            this.vx *= -CONFIG.ELASTICITY;
+        }
+        if (this.x > canvas.width - this.radius) {
+            this.x = canvas.width - this.radius;
+            this.vx *= -CONFIG.ELASTICITY;
+        }
+        if (this.y < this.radius) {
+            this.y = this.radius;
+            this.vy *= -CONFIG.ELASTICITY;
+        }
+        if (this.y > canvas.height - this.radius) {
+            this.y = canvas.height - this.radius;
+            this.vy *= -CONFIG.ELASTICITY;
+        }
+    }
