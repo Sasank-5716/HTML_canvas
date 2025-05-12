@@ -104,3 +104,13 @@ document.getElementById('gravityBtn').addEventListener('click', () => {
 document.getElementById('resetBtn').addEventListener('click', () => {
     particles = Array.from({ length: CONFIG.PARTICLE_COUNT }, () => new Particle());
 });
+
+// Mouse handlers
+canvas.addEventListener('mousemove', (e) => {
+    mouse.x = e.clientX;
+    mouse.y = e.clientY;
+});
+
+canvas.addEventListener('mousedown', () => mouse.pressed = true);
+canvas.addEventListener('mouseup', () => mouse.pressed = false);
+canvas.addEventListener('mouseleave', () => mouse.pressed = false);
