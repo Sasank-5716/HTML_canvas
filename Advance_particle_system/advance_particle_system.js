@@ -114,3 +114,16 @@ canvas.addEventListener('mousemove', (e) => {
 canvas.addEventListener('mousedown', () => mouse.pressed = true);
 canvas.addEventListener('mouseup', () => mouse.pressed = false);
 canvas.addEventListener('mouseleave', () => mouse.pressed = false);
+
+// Animation loop
+function animate() {
+    ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+    particles.forEach(particle => {
+        particle.update();
+        particle.draw();
+    });
+
+    requestAnimationFrame(animate);
+}
