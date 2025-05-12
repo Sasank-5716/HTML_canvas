@@ -77,3 +77,21 @@ class Particle {
             this.vy *= -CONFIG.ELASTICITY;
         }
     }
+    draw() {
+        // Velocity-based color
+        const speed = Math.sqrt(this.vx * this.vx + this.vy * this.vy);
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+        
+        // Glow effect
+        const gradient = ctx.createRadialGradient(
+            this.x, this.y, 0, 
+            this.x, this.y, this.radius * 2
+        );
+        gradient.addColorStop(0, this.baseColor);
+        gradient.addColorStop(1, 'rgba(0,0,0,0)');
+        
+        ctx.fillStyle = gradient;
+        ctx.fill();
+    }
+}
