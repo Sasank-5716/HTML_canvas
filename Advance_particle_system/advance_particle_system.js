@@ -95,3 +95,12 @@ class Particle {
         ctx.fill();
     }
 }
+
+// System controls
+document.getElementById('gravityBtn').addEventListener('click', () => {
+    CONFIG.GRAVITY = CONFIG.GRAVITY ? 0 : 0.25;
+});
+
+document.getElementById('resetBtn').addEventListener('click', () => {
+    particles = Array.from({ length: CONFIG.PARTICLE_COUNT }, () => new Particle());
+});
