@@ -21,3 +21,28 @@ function initCanvas() {
     canvas.height = window.innerHeight;
 }
 initCanvas();
+
+// Particle class
+class Particle {
+    constructor() {
+        this.radius = Math.random() * 4 + 2;
+        this.x = Math.random() * canvas.width;
+        this.y = Math.random() * canvas.height;
+        this.vx = (Math.random() - 0.5) * 3;
+        this.vy = (Math.random() - 0.5) * 3;
+        this.baseColor = `hsl(${Math.random() * 360}, 70%, 50%)`;
+    }
+    update() {
+        // Mouse interaction
+        if (mouse.pressed) {
+            const dx = mouse.x - this.x;
+            const dy = mouse.y - this.y;
+            const distance = Math.sqrt(dx * dx + dy * dy);
+            
+            if (distance < CONFIG.MOUSE_RADIUS) {
+                const angle = Math.atan2(dy, dx);
+                const force = (CONFIG.MOUSE_RADIUS - distance) * CONFIG.MOUSE_FORCE;
+                this.vx += Math.cos(angle) * force;
+                this.vy += Math.sin(angle) * force;
+            }
+        }
