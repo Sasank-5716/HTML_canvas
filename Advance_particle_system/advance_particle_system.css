@@ -14,13 +14,8 @@ canvas {
 }
 
 .controls {
-    position: fixed;
-    top: 30px;
-    left: 50%;
-    transform: translateX(-50%);
-    display: flex;
-    gap: 18px;
-    z-index: 10;
+  display: flex;
+  gap: 18px;
 }
 
 button {
@@ -63,5 +58,122 @@ button:hover {
 
 button:hover::before {
     left: 120%;
+}
+
+.top-bar {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 18px;
+  z-index: 10;
+  user-select: none;
+}
+
+/* Logo Container */
+.logo-container {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  padding: 12px 24px;
+  margin: 20px auto 10px;
+  background: linear-gradient(135deg, #00c6ff 0%, #0072ff 100%);
+  border-radius: 40px;
+  box-shadow:
+    0 4px 15px rgba(0, 198, 255, 0.5),
+    inset 0 -2px 8px rgba(255, 255, 255, 0.3);
+  cursor: default;
+  user-select: none;
+  width: fit-content;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: white;
+  font-weight: 600;
+  font-size: 1.2rem;
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+  position: relative;
+  outline-offset: 4px;
+}
+
+/* Logo Icon Circle */
+.logo-icon {
+  width: 48px;
+  height: 48px;
+  background: radial-gradient(circle at top left, #00e0ff, #0047b3);
+  border-radius: 50%;
+  box-shadow:
+    0 0 10px #00e0ff,
+    inset 0 2px 6px rgba(255, 255, 255, 0.6);
+  color: white;
+  font-weight: 900;
+  font-size: 1.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-shadow:
+    0 0 5px rgba(0, 224, 255, 0.8),
+    0 0 10px rgba(0, 224, 255, 0.6);
+  user-select: none;
+  transition: box-shadow 0.3s ease;
+}
+
+/* Highlight the name */
+.logo-text span {
+  color: #00ff04;
+  text-shadow:
+    0 0 8px #ffe600,
+    0 0 20px #ffcc00;
+  font-weight: 700;
+}
+
+/* Hover & Focus Effects */
+.logo-container:hover,
+.logo-container:focus {
+  box-shadow:
+    0 8px 30px rgba(0, 198, 255, 0.8),
+    inset 0 -2px 12px rgba(255, 255, 255, 0.5);
+  transform: scale(1.05);
+  outline: none;
+}
+
+.logo-container:hover .logo-icon,
+.logo-container:focus .logo-icon {
+  box-shadow:
+    0 0 20px #00e0ff,
+    inset 0 4px 10px rgba(255, 255, 255, 0.8);
+  transform: rotate(10deg) scale(1.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Subtle shimmer animation on hover */
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.logo-container:hover .logo-text span,
+.logo-container:focus .logo-text span {
+  background: linear-gradient(
+    90deg,
+    #ffe600,
+    #fff700,
+    #ffe600
+  );
+  background-size: 200% 100%;
+  animation: shimmer 2.5s infinite;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Accessibility focus */
+.logo-container:focus-visible {
+  outline: 3px solid #00e0ff;
+  outline-offset: 6px;
 }
 
