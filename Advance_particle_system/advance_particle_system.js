@@ -131,3 +131,13 @@ function animate() {
 // Initialize particles
 particles = Array.from({ length: CONFIG.PARTICLE_COUNT }, () => new Particle());
 animate();
+
+// Window resize handler
+window.addEventListener('resize', () => {
+    initCanvas();
+    particles = particles.map(p => {
+        p.x = Math.min(p.x, canvas.width - p.radius);
+        p.y = Math.min(p.y, canvas.height - p.radius);
+        return p;
+    });
+});
