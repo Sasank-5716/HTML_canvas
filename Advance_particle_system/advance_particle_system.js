@@ -127,3 +127,7 @@ function animate() {
 
     requestAnimationFrame(animate);
 }
+
+// Initialize particles
+particles = Array.from({ length: CONFIG.PARTICLE_COUNT }, () => new Particle());
+animate();
