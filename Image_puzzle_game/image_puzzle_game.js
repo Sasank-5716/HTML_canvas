@@ -12,3 +12,10 @@
   let tiles = [];
   let firstSelected = null;
   let solved = false;
+
+
+
+
+
+
+  })();
