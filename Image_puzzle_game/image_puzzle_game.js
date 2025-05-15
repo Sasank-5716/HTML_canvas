@@ -46,4 +46,24 @@ function initTiles() {
     }
   }
 
+   function drawTiles() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    tiles.forEach(tile => {
+      ctx.drawImage(
+        img,
+        tile.sx, tile.sy, tileWidth, tileHeight,
+        tile.x * tileWidth, tile.y * tileHeight, tileWidth, tileHeight
+      );
+      ctx.strokeStyle = '#333';
+      ctx.lineWidth = 2;
+      ctx.strokeRect(tile.x * tileWidth, tile.y * tileHeight, tileWidth, tileHeight);
+    });
+
+    if (firstSelected !== null) {
+      // Highlight selected tile
+      ctx.strokeStyle = '#f00';
+      ctx.lineWidth = 4;
+      ctx.strokeRect(firstSelected.x * tileWidth, firstSelected.y * tileHeight, tileWidth, tileHeight);
+    }
+  }
   })();
