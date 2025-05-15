@@ -13,7 +13,11 @@
   let firstSelected = null;
   let solved = false;
 
-
+  img.onload = () => {
+    initTiles();
+    shuffleTiles();
+    drawTiles();
+  };
 
 
 
