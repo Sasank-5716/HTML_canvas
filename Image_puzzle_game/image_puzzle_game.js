@@ -19,7 +19,23 @@
     drawTiles();
   };
 
-
+function initTiles() {
+    tiles = [];
+    for (let y = 0; y < rows; y++) {
+      for (let x = 0; x < cols; x++) {
+        tiles.push({
+          sx: x * tileWidth,
+          sy: y * tileHeight,
+          x: x,
+          y: y,
+          correctX: x,
+          correctY: y,
+        });
+      }
+    }
+    solved = false;
+    setMessage('');
+  }
 
 
   })();
