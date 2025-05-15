@@ -66,4 +66,12 @@ function initTiles() {
       ctx.strokeRect(firstSelected.x * tileWidth, firstSelected.y * tileHeight, tileWidth, tileHeight);
     }
   }
+
+function getTileAtPosition(x, y) {
+    const tileX = Math.floor(x / tileWidth);
+    const tileY = Math.floor(y / tileHeight);
+    return tiles.find(t => t.x === tileX && t.y === tileY);
+  }
+
+
   })();
