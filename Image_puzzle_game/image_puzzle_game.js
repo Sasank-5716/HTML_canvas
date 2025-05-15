@@ -37,5 +37,13 @@ function initTiles() {
     setMessage('');
   }
 
+  function shuffleTiles() {
+    // Fisher-Yates shuffle on tile positions
+    for (let i = tiles.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [tiles[i].x, tiles[j].x] = [tiles[j].x, tiles[i].x];
+      [tiles[i].y, tiles[j].y] = [tiles[j].y, tiles[i].y];
+    }
+  }
 
   })();
