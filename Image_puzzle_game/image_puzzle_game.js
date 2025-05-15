@@ -78,5 +78,8 @@ function getTileAtPosition(x, y) {
     [tile1.y, tile2.y] = [tile2.y, tile1.y];
   }
 
-  
+  function checkSolved() {
+    return tiles.every(tile => tile.x === tile.correctX && tile.y === tile.correctY);
+  }
+
   })();
