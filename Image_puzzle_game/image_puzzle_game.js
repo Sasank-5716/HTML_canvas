@@ -73,5 +73,10 @@ function getTileAtPosition(x, y) {
     return tiles.find(t => t.x === tileX && t.y === tileY);
   }
 
+ function swapTiles(tile1, tile2) {
+    [tile1.x, tile2.x] = [tile2.x, tile1.x];
+    [tile1.y, tile2.y] = [tile2.y, tile1.y];
+  }
 
+  
   })();
