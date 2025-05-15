@@ -82,4 +82,7 @@ function getTileAtPosition(x, y) {
     return tiles.every(tile => tile.x === tile.correctX && tile.y === tile.correctY);
   }
 
+  function setMessage(msg) {
+    document.getElementById('message').textContent = msg;
+  }
   })();
