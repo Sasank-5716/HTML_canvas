@@ -1,13 +1,13 @@
 (() => {
-  const canvas = document.getElementById('puzzleCanvas');
-  const ctx = canvas.getContext('2d');
+  const canvas = document.getElementById("puzzleCanvas");
+  const ctx = canvas.getContext("2d");
 
   const rows = 3;
   const cols = 3;
   const tileWidth = canvas.width / cols;
   const tileHeight = canvas.height / rows;
   let img = new Image();
-  img.src = ''; 
+  img.src = "";
 
   let tiles = [];
   let firstSelected = null;
@@ -19,7 +19,7 @@
     drawTiles();
   };
 
-function initTiles() {
+  function initTiles() {
     tiles = [];
     for (let y = 0; y < rows; y++) {
       for (let x = 0; x < cols; x++) {
@@ -34,7 +34,7 @@ function initTiles() {
       }
     }
     solved = false;
-    setMessage('');
+    setMessage("");
   }
 
   function shuffleTiles() {
@@ -46,47 +46,65 @@ function initTiles() {
     }
   }
 
-   function drawTiles() {
+  function drawTiles() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
-    tiles.forEach(tile => {
+    tiles.forEach((tile) => {
       ctx.drawImage(
         img,
-        tile.sx, tile.sy, tileWidth, tileHeight,
-        tile.x * tileWidth, tile.y * tileHeight, tileWidth, tileHeight
+        tile.sx,
+        tile.sy,
+        tileWidth,
+        tileHeight,
+        tile.x * tileWidth,
+        tile.y * tileHeight,
+        tileWidth,
+        tileHeight
       );
-      ctx.strokeStyle = '#333';
+      ctx.strokeStyle = "#333";
       ctx.lineWidth = 2;
-      ctx.strokeRect(tile.x * tileWidth, tile.y * tileHeight, tileWidth, tileHeight);
+      ctx.strokeRect(
+        tile.x * tileWidth,
+        tile.y * tileHeight,
+        tileWidth,
+        tileHeight
+      );
     });
 
     if (firstSelected !== null) {
       // Highlight selected tile
-      ctx.strokeStyle = '#f00';
+      ctx.strokeStyle = "#f00";
       ctx.lineWidth = 4;
-      ctx.strokeRect(firstSelected.x * tileWidth, firstSelected.y * tileHeight, tileWidth, tileHeight);
+      ctx.strokeRect(
+        firstSelected.x * tileWidth,
+        firstSelected.y * tileHeight,
+        tileWidth,
+        tileHeight
+      );
     }
   }
 
-function getTileAtPosition(x, y) {
+  function getTileAtPosition(x, y) {
     const tileX = Math.floor(x / tileWidth);
     const tileY = Math.floor(y / tileHeight);
-    return tiles.find(t => t.x === tileX && t.y === tileY);
+    return tiles.find((t) => t.x === tileX && t.y === tileY);
   }
 
- function swapTiles(tile1, tile2) {
+  function swapTiles(tile1, tile2) {
     [tile1.x, tile2.x] = [tile2.x, tile1.x];
     [tile1.y, tile2.y] = [tile2.y, tile1.y];
   }
 
   function checkSolved() {
-    return tiles.every(tile => tile.x === tile.correctX && tile.y === tile.correctY);
+    return tiles.every(
+      (tile) => tile.x === tile.correctX && tile.y === tile.correctY
+    );
   }
 
   function setMessage(msg) {
-    document.getElementById('message').textContent = msg;
+    document.getElementById("message").textContent = msg;
   }
 
-canvas.addEventListener('click', e => {
+  canvas.addEventListener("click", (e) => {
     if (solved) return;
 
     const rect = canvas.getBoundingClientRect();
@@ -96,7 +114,21 @@ canvas.addEventListener('click', e => {
     const clickedTile = getTileAtPosition(clickX, clickY);
     if (!clickedTile) return;
 
+    if (!firstSelected) {
+      firstSelected = clickedTile;
+      drawTiles();
+    } else if (firstSelected === clickedTile) {
+      firstSelected = null;
+      drawTiles();
+    } else {
+      swapTiles(firstSelected, clickedTile);
+      firstSelected = null;
+      drawTiles();
 
-});
-
-  })();
+      if (checkSolved()) {
+        solved = true;
+        setMessage("🎉 Congratulations! Puzzle Solved!");
+      }
+    }
+  });
+})();
