@@ -85,4 +85,18 @@ function getTileAtPosition(x, y) {
   function setMessage(msg) {
     document.getElementById('message').textContent = msg;
   }
+
+canvas.addEventListener('click', e => {
+    if (solved) return;
+
+    const rect = canvas.getBoundingClientRect();
+    const clickX = e.clientX - rect.left;
+    const clickY = e.clientY - rect.top;
+
+    const clickedTile = getTileAtPosition(clickX, clickY);
+    if (!clickedTile) return;
+
+
+});
+
   })();
