@@ -131,4 +131,13 @@
       }
     }
   });
+
+  document.getElementById('shuffleBtn').addEventListener('click', () => {
+    if (!img.complete) return;
+    initTiles();
+    shuffleTiles();
+    drawTiles();
+    setMessage('');
+  });
+  
 })();
