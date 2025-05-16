@@ -2,9 +2,12 @@
   const canvas = document.getElementById("puzzleCanvas");
   const ctx = canvas.getContext("2d");
 
+  let solved = false;
+  let tileSize;
+
   const tileCount = 3;
   const size = canvas.width; // assuming square canvas
-  const tileSize = size / tileCount;
+  tileSize = size / tileCount;
   let img = new Image();
   img.src = "./sasank02.jpg";
 
@@ -15,24 +18,19 @@
   let source;
 
   img.onload = () => {
-  // Calculate image aspect ratio
-  const aspectRatio = img.width / img.height;
+    const fixedSize = 450;
+  canvas.width = fixedSize;
+  canvas.height = fixedSize;
+  tileSize = fixedSize / tileCount;
+ emptyPos = { x: tileCount - 1, y: tileCount - 1 };
+    solved = false;
+    // Initialize tiles with updated tile sizes
+    initTiles();
 
-  // Fix canvas height and adjust width to maintain image aspect ratio
-  const fixedHeight = 450; // or your desired canvas height
-  canvas.height = fixedHeight;
-  canvas.width = fixedHeight * aspectRatio;
-
-  // Calculate tile size based on updated canvas size
-  tileWidth = canvas.width / cols;
-  tileHeight = canvas.height / rows;
-
-  // Initialize tiles with updated tile sizes
-  initTiles();
-
-  shuffleTiles();
-  drawTiles();
-};
+    shuffleTiles();
+    drawTiles();
+    setMessage("");
+  };
 
   function initTiles() {
     tiles = [];
@@ -46,10 +44,10 @@
           y, // Current tile position on grid
           correctX: x, // Correct position for win check
           correctY: y,
-          draw: () =>
+          draw: function(){
             ctx.drawImage(
-              source,
-               this.correctX * tileSize,
+              img,
+              this.correctX * tileSize,
               this.correctY * tileSize,
               tileSize,
               tileSize,
@@ -57,13 +55,14 @@
               this.y * tileSize,
               tileSize,
               tileSize
-            ),
+            )
+          }
         });
       }
     }
   }
 
-   // Check if tile is adjacent to empty space
+  // Check if tile is adjacent to empty space
   function isAdjacent(tile, empty) {
     return (
       (Math.abs(tile.x - empty.x) === 1 && tile.y === empty.y) ||
@@ -84,15 +83,23 @@
       const randomTile = movable[Math.floor(Math.random() * movable.length)];
       moveTile(randomTile);
     }
+    solved = false;
+    emptyPos = { x: tileCount - 1, y: tileCount - 1 };
+
   }
 
   // Draw puzzle tiles and empty space
   function drawTiles() {
-    ctx.clearRect(0, 0, size, size);
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
 
     // Draw empty tile as gray rectangle
     ctx.fillStyle = "#ddd";
-    ctx.fillRect(emptyPos.x * tileSize, emptyPos.y * tileSize, tileSize, tileSize);
+    ctx.fillRect(
+      emptyPos.x * tileSize,
+      emptyPos.y * tileSize,
+      tileSize,
+      tileSize
+    );
 
     // Draw all tiles
     tiles.forEach((tile) => tile.draw());
@@ -101,19 +108,20 @@
     ctx.strokeStyle = "#333";
     ctx.lineWidth = 2;
     for (let i = 0; i <= tileCount; i++) {
-      ctx.beginPath();
-      ctx.moveTo(i * tileSize, 0);
-      ctx.lineTo(i * tileSize, size);
-      ctx.stroke();
+  ctx.beginPath();
+  ctx.moveTo(i * tileSize, 0);
+  ctx.lineTo(i * tileSize, canvas.height);
+  ctx.stroke();
 
-      ctx.beginPath();
-      ctx.moveTo(0, i * tileSize);
-      ctx.lineTo(size, i * tileSize);
-      ctx.stroke();
-    }
+  ctx.beginPath();
+  ctx.moveTo(0, i * tileSize);
+  ctx.lineTo(canvas.width, i * tileSize);
+  ctx.stroke();
+}
+
   }
 
-    // Check if puzzle is solved
+  // Check if puzzle is solved
   function checkSolved() {
     return tiles.every((t) => t.x === t.correctX && t.y === t.correctY);
   }
@@ -122,7 +130,6 @@
   function setMessage(msg) {
     document.getElementById("message").textContent = msg;
   }
-    
 
   canvas.addEventListener("click", (e) => {
     if (solved) return;
@@ -146,7 +153,7 @@
     }
   });
 
-   // Shuffle button handler
+  // Shuffle button handler
   document.getElementById("shuffleBtn").addEventListener("click", () => {
     emptyPos = { x: tileCount - 1, y: tileCount - 1 };
     initTiles();
