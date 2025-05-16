@@ -24,3 +24,17 @@ body {
   font-weight: bold;
   color: green;
 }
+
+.logo-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.creator-text {
+  font-size: 1.2em;
+  font-weight: bold;
+  color: #333;
+  letter-spacing: 1px;
+}
