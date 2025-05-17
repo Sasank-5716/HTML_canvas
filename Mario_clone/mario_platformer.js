@@ -29,3 +29,38 @@ class Player {
     this.velY = 0;
     this.jumping = false;
   }
+
+  update() {
+    if (keys.left) {
+      this.velX = -PLAYER_SPEED;
+    } else if (keys.right) {
+      this.velX = PLAYER_SPEED;
+    } else {
+      this.velX *= FRICTION;
+      if (Math.abs(this.velX) < 0.1) this.velX = 0;
+    }
+
+    this.velY += GRAVITY;
+
+    this.x += this.velX;
+    this.y += this.velY;
+
+    this.jumping = true;
+    for (let platform of currentPlatforms) {
+      if (
+        this.x < platform.x + platform.width &&
+        this.x + this.width > platform.x &&
+        this.y + this.height > platform.y &&
+        this.y + this.height < platform.y + platform.height &&
+        this.velY >= 0
+      ) {
+        this.y = platform.y - this.height;
+        this.velY = 0;
+        this.jumping = false;
+      }
+    }
+    if (this.x < 0) {
+      this.x = 0;
+      this.velX = 0;
+    }
+}}
