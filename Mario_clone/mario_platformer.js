@@ -63,4 +63,9 @@ class Player {
       this.x = 0;
       this.velX = 0;
     }
-}}
+}
+draw() {
+    ctx.fillStyle = 'red';
+    ctx.fillRect(this.x, this.y, this.width, this.height);
+  }
+}
