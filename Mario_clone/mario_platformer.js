@@ -149,3 +149,18 @@ function generateLevel(levelNum) {
 
   return { platforms, startFlag, endFlag };
 }
+
+// Create 10 levels
+for (let i = 0; i < 10; i++) {
+  levels.push(generateLevel(i));
+}
+
+let currentLevel = 0;
+let currentPlatforms = levels[currentLevel].platforms;
+let currentStartFlag = levels[currentLevel].startFlag;
+let currentEndFlag = levels[currentLevel].endFlag;
+
+const player = new Player();
+let cameraX = 0;
+let gameOver = false;
+let gameOverTimeout = null;
