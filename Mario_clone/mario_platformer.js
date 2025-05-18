@@ -83,3 +83,30 @@ class Platform {
     ctx.fillRect(this.x - offsetX, this.y, this.width, this.height);
   }
 }
+
+class Flag {
+  constructor(x, y, isStart = false) {
+    this.x = x;
+    this.y = y;
+    this.width = 20;
+    this.height = 50;
+    this.isStart = isStart;
+  }
+
+  draw(offsetX) {
+    const baseX = this.x - offsetX;
+    ctx.fillStyle = '#8B4513'; // pole
+    ctx.fillRect(baseX + this.width / 2 - 2, this.y - this.height, 4, this.height);
+
+    ctx.fillStyle = this.isStart ? 'blue' : 'red';
+    ctx.beginPath();
+    ctx.moveTo(baseX + this.width / 2 + 2, this.y - this.height);
+    ctx.lineTo(baseX + this.width / 2 + 22, this.y - this.height + 15);
+    ctx.lineTo(baseX + this.width / 2 + 2, this.y - this.height + 30);
+    ctx.closePath();
+    ctx.fill();
+
+    ctx.fillStyle = 'green';
+    ctx.fillRect(baseX, this.y, this.width, 10);
+  }
+}
