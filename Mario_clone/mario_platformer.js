@@ -185,3 +185,11 @@ function resetLevel(levelIndex) {
 function updateLevelIndicator() {
   levelIndicator.textContent = `Level ${currentLevel + 1}`;
 }
+
+function showGameOver() {
+  gameOver = true;
+  gameOverDiv.classList.remove('hidden');
+  gameOverTimeout = setTimeout(() => {
+    resetLevel(0);
+  }, 2000);
+}
