@@ -69,3 +69,17 @@ draw() {
     ctx.fillRect(this.x, this.y, this.width, this.height);
   }
 }
+
+class Platform {
+  constructor(x, y, width, height) {
+    this.x = x;
+    this.y = y;
+    this.width = width;
+    this.height = height;
+  }
+
+  draw(offsetX) {
+    ctx.fillStyle = 'green';
+    ctx.fillRect(this.x - offsetX, this.y, this.width, this.height);
+  }
+}
