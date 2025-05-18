@@ -164,3 +164,24 @@ const player = new Player();
 let cameraX = 0;
 let gameOver = false;
 let gameOverTimeout = null;
+
+function resetLevel(levelIndex) {
+  currentLevel = levelIndex;
+  currentPlatforms = levels[currentLevel].platforms;
+  currentStartFlag = levels[currentLevel].startFlag;
+  currentEndFlag = levels[currentLevel].endFlag;
+
+  player.x = currentStartFlag.x + 30;
+  player.y = currentStartFlag.y - player.height;
+  player.velX = 0;
+  player.velY = 0;
+  player.jumping = false;
+  cameraX = 0;
+  gameOver = false;
+  gameOverDiv.classList.add('hidden');
+  updateLevelIndicator();
+}
+
+function updateLevelIndicator() {
+  levelIndicator.textContent = `Level ${currentLevel + 1}`;
+}
