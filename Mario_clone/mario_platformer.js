@@ -227,4 +227,21 @@ function gameLoop() {
   ctx.translate(-cameraX, 0);
   player.draw();
   ctx.restore();
+
+  // Check if player reached end flag
+  if (
+    player.x + player.width > currentEndFlag.x &&
+    player.x < currentEndFlag.x + currentEndFlag.width &&
+    player.y + player.height > currentEndFlag.y - currentEndFlag.height
+  ) {
+    currentLevel++;
+    if (currentLevel >= levels.length) {
+      alert('🎉 Congratulations! You completed all 10 levels! 🎉');
+      resetLevel(0);
+    } else {
+      resetLevel(currentLevel);
+    }
+  }
+
+  requestAnimationFrame(gameLoop);
 }
