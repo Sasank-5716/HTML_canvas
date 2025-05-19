@@ -245,3 +245,8 @@ function gameLoop() {
 
   requestAnimationFrame(gameLoop);
 }
+
+function drawBackground() {
+  ctx.fillStyle = '#654321'; // brown ground
+  ctx.fillRect(0, canvas.height - 30, canvas.width, 30);
+}
