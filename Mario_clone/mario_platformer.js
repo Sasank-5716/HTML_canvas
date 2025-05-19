@@ -209,5 +209,11 @@ function gameLoop() {
   if (player.y + player.height > canvas.height - 30 + 5) {
     showGameOver();
   }
+// Camera follows player, clamp to level width
+  const levelWidth = Math.max(...currentPlatforms.map(p => p.x + p.width)) + 400;
+  cameraX = player.x - canvas.width / 4;
+  if (cameraX < 0) cameraX = 0;
+  if (cameraX > levelWidth - canvas.width) cameraX = levelWidth - canvas.width;
 
+  drawBackground();
 }
