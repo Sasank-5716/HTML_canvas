@@ -193,3 +193,21 @@ function showGameOver() {
     resetLevel(0);
   }, 2000);
 }
+
+function gameLoop() {
+  if (gameOver) {
+    requestAnimationFrame(gameLoop);
+    return;
+  }
+
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+  player.update();
+
+  // Game over if player touches brown ground (bottom 30px)
+  // Added 5px buffer to reduce false positives
+  if (player.y + player.height > canvas.height - 30 + 5) {
+    showGameOver();
+  }
+
+}
