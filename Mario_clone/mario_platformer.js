@@ -250,3 +250,17 @@ function drawBackground() {
   ctx.fillStyle = '#654321'; // brown ground
   ctx.fillRect(0, canvas.height - 30, canvas.width, 30);
 }
+
+window.addEventListener('keydown', e => {
+  if (e.code === 'ArrowLeft' || e.code === 'KeyA') keys.left = true;
+  if (e.code === 'ArrowRight' || e.code === 'KeyD') keys.right = true;
+  if ((e.code === 'ArrowUp' || e.code === 'KeyW' || e.code === 'Space') && !player.jumping) {
+    player.velY = -JUMP_POWER;
+    player.jumping = true;
+  }
+});
+
+window.addEventListener('keyup', e => {
+  if (e.code === 'ArrowLeft' || e.code === 'KeyA') keys.left = false;
+  if (e.code === 'ArrowRight' || e.code === 'KeyD') keys.right = false;
+});
