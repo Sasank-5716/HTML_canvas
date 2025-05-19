@@ -216,4 +216,15 @@ function gameLoop() {
   if (cameraX > levelWidth - canvas.width) cameraX = levelWidth - canvas.width;
 
   drawBackground();
+  for (let platform of currentPlatforms) {
+    platform.draw(cameraX);
+  }
+
+  currentStartFlag.draw(cameraX);
+  currentEndFlag.draw(cameraX);
+
+  ctx.save();
+  ctx.translate(-cameraX, 0);
+  player.draw();
+  ctx.restore();
 }
