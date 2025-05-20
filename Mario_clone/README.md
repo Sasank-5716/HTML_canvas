@@ -1,6 +1,7 @@
 # 🎮 Platformer Game
 A simple 2D platformer game built with HTML5 Canvas and JavaScript. Control a red square 🟥 that jumps across platforms 🟩 to reach the red flag 🚩 and progress through 10 increasingly challenging levels! 🌟
 
+
 # ✨ Features
 🎯 Smooth player movement with left/right controls and jumping
 
@@ -18,11 +19,13 @@ A simple 2D platformer game built with HTML5 Canvas and JavaScript. Control a re
 
 🔄 Automatic level reset on game over and progression on level completion
 
+
 # 🎮 Controls
 Action	Keys	Emoji
 Move Left	Left Arrow / A	⬅️
 Move Right	Right Arrow / D	➡️
 Jump	Up Arrow / W / Space	⬆️
+
 
 # 🚀 How to Run
 ## Download or clone the repository. 📥
@@ -34,10 +37,12 @@ git clone https://github.com/Sasank-5716/HTML_canvas
 cd Mario_clone
 ```
 
+
 ## Run the game
 Run mario_platformer.html file
 
-⚙️ Customization
+
+# ⚙️ Customization
 Adjust gameplay constants in game.js like:
 
 GRAVITY 🌌
@@ -48,9 +53,10 @@ JUMP_POWER 🦘
 
 Modify generateLevel() to change platform layout and difficulty.
 
-Extend the game with new features like enemies 👾, collectibles 💎, or sound effects 🎵.
+Extend the game with new features like enemies 👾, collectibles 💎, or sound effects 🎵
 
-🐞 Known Issues & Fixes
+
+# 🐞 Known Issues & Fixes
 The final platform is raised slightly above ground level to prevent unintended game overs. 🛠️
 
 Collision detection includes a small tolerance to improve landing accuracy. 🎯
