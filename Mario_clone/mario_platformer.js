@@ -50,7 +50,7 @@ class Player {
       if (
         this.x < platform.x + platform.width &&
         this.x + this.width > platform.x &&
-        this.y + this.height > platform.y &&
+        this.y + this.height > platform.y -5 &&
         this.y + this.height < platform.y + platform.height &&
         this.velY >= 0
       ) {
@@ -126,7 +126,7 @@ function generateLevel(levelNum) {
   const platforms = [];
 
   // Long start platform
-  platforms.push(new Platform(0, baseY, 400, 20));
+  platforms.push(new Platform(0, baseY-10, 400, 20));
 
   // Intermediate platforms
   let currentX = 450;
@@ -145,7 +145,7 @@ function generateLevel(levelNum) {
   platforms.push(new Platform(currentX, baseY-10, 400, 20));
 
   const startFlag = new Flag(50, baseY, true);
-  const endFlag = new Flag(currentX + 350, baseY, false);
+  const endFlag = new Flag(currentX + 350, baseY- 10, false);
 
   return { platforms, startFlag, endFlag };
 }
