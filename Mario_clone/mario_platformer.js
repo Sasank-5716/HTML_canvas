@@ -142,7 +142,7 @@ function generateLevel(levelNum) {
   }
 
   // Long end platform - FIXED to baseY to avoid game over bug
-  platforms.push(new Platform(currentX, baseY, 400, 20));
+  platforms.push(new Platform(currentX, baseY-10, 400, 20));
 
   const startFlag = new Flag(50, baseY, true);
   const endFlag = new Flag(currentX + 350, baseY, false);
