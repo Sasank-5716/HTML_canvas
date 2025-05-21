@@ -28,3 +28,16 @@ const maxPower = 20;
 let power = 0;
 let charging = false;
 let powerDirection = 1; // 1 for increasing, -1 for decreasing
+
+// Ball state
+let ball = {
+  x: ballStartX,
+  y: ballStartY,
+  vx: 0,
+  vy: 0,
+  moving: false,
+  scored: false,
+};
+
+// Animations and effects
+let particles = [];
