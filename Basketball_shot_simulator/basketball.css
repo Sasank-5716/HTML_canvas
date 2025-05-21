@@ -29,3 +29,25 @@ h1 {
   letter-spacing: 2px;
   text-shadow: 0 0 10px #ffa500;
 }
+
+canvas {
+  background: #1e1e1e;
+  border-radius: 10px;
+  box-shadow: 0 0 20px #ffa500;
+  display: block;
+  margin: 0 auto;
+}
+
+.instructions {
+  margin-top: 10px;
+  font-size: 0.9rem;
+  font-style: italic;
+  color: #ffcc80;
+}
+
+.scoreboard {
+  margin-top: 15px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  text-shadow: 0 0 6px #ffb300;
+}
