@@ -69,3 +69,13 @@ function drawBackground() {
   ctx.arc(hoopX, hoopY, rimRadius, 0, Math.PI, true);
   ctx.stroke();
 }
+
+function drawBall() {
+  // Ball shadow
+  ctx.beginPath();
+  ctx.ellipse(ball.x + 5, ball.y + 10, ballRadius * 0.9, ballRadius * 0.5, 0, 0, 2 * Math.PI);
+  ctx.fillStyle = 'rgba(0,0,0,0.3)';
+  ctx.fill();
+
+
+}
