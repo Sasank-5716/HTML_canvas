@@ -77,5 +77,13 @@ function drawBall() {
   ctx.fillStyle = 'rgba(0,0,0,0.3)';
   ctx.fill();
 
+  // Ball body
+  let gradient = ctx.createRadialGradient(ball.x - 5, ball.y - 5, ballRadius / 4, ball.x, ball.y, ballRadius);
+  gradient.addColorStop(0, '#ff8c00');
+  gradient.addColorStop(1, '#b35900');
+  ctx.fillStyle = gradient;
+  ctx.beginPath();
+  ctx.arc(ball.x, ball.y, ballRadius, 0, 2 * Math.PI);
+  ctx.fill();
 
 }
