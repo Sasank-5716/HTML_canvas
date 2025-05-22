@@ -41,3 +41,31 @@ let ball = {
 
 // Animations and effects
 let particles = [];
+
+function drawBackground() {
+  // Gradient court floor
+  let grd = ctx.createLinearGradient(0, HEIGHT, 0, HEIGHT - 100);
+  grd.addColorStop(0, '#d2691e');
+  grd.addColorStop(1, '#8b4513');
+  ctx.fillStyle = grd;
+  ctx.fillRect(0, HEIGHT - 100, WIDTH, 100);
+
+  // Court lines
+  ctx.strokeStyle = '#fff8dc';
+  ctx.lineWidth = 3;
+  ctx.beginPath();
+  ctx.moveTo(hoopX - rimRadius, HEIGHT - 100);
+  ctx.lineTo(hoopX - rimRadius, hoopY + 5);
+  ctx.stroke();
+
+  // Backboard
+  ctx.fillStyle = '#fff';
+  ctx.fillRect(hoopX + hoopWidth / 2 - 5, hoopY - 40, 10, 60);
+
+  // Hoop rim
+  ctx.strokeStyle = '#ff4500';
+  ctx.lineWidth = 5;
+  ctx.beginPath();
+  ctx.arc(hoopX, hoopY, rimRadius, 0, Math.PI, true);
+  ctx.stroke();
+}
