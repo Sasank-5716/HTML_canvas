@@ -86,4 +86,16 @@ function drawBall() {
   ctx.arc(ball.x, ball.y, ballRadius, 0, 2 * Math.PI);
   ctx.fill();
 
+   // Ball lines
+  ctx.strokeStyle = '#663300';
+  ctx.lineWidth = 2;
+  ctx.beginPath();
+  ctx.arc(ball.x, ball.y, ballRadius, 0, Math.PI);
+  ctx.moveTo(ball.x - ballRadius, ball.y);
+  ctx.lineTo(ball.x + ballRadius, ball.y);
+  ctx.moveTo(ball.x - ballRadius * 0.7, ball.y - ballRadius * 0.7);
+  ctx.lineTo(ball.x + ballRadius * 0.7, ball.y + ballRadius * 0.7);
+  ctx.moveTo(ball.x - ballRadius * 0.7, ball.y + ballRadius * 0.7);
+  ctx.lineTo(ball.x + ballRadius * 0.7, ball.y - ballRadius * 0.7);
+  ctx.stroke();
 }
