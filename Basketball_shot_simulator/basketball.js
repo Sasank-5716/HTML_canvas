@@ -99,3 +99,7 @@ function drawBall() {
   ctx.lineTo(ball.x + ballRadius * 0.7, ball.y - ballRadius * 0.7);
   ctx.stroke();
 }
+
+function drawPowerMeter() {
+  powerFill.style.width = `${(power / maxPower) * 100}%`;
+}
