@@ -103,3 +103,15 @@ function drawBall() {
 function drawPowerMeter() {
   powerFill.style.width = `${(power / maxPower) * 100}%`;
 }
+
+function resetBall() {
+  ball.x = ballStartX;
+  ball.y = ballStartY;
+  ball.vx = 0;
+  ball.vy = 0;
+  ball.moving = false;
+  ball.scored = false;
+  power = 0;
+  powerDirection = 1;
+  drawPowerMeter();
+}
