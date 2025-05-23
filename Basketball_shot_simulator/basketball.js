@@ -188,3 +188,16 @@ function createScoreParticles(x, y) {
     });
   }
 }
+
+function updateParticles() {
+  for (let i = particles.length - 1; i >= 0; i--) {
+    let p = particles[i];
+    p.x += p.vx;
+    p.y += p.vy;
+    p.vy += 0.15; // gravity for particles
+    p.alpha -= 0.03;
+    if (p.alpha <= 0) {
+      particles.splice(i, 1);
+    }
+  }
+}
