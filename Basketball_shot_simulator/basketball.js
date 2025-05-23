@@ -170,3 +170,7 @@ function updateBall() {
     setTimeout(resetBall, 1500);
   }
 }
+
+function updateScore() {
+  scoreElem.textContent = score;
+}
