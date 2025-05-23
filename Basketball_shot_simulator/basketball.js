@@ -124,3 +124,35 @@ function shootBall() {
   ball.vy = -velocity * Math.sin(angle);
   ball.moving = true;
 }
+
+function updateBall() {
+  if (!ball.moving) return;
+
+  ball.x += ball.vx;
+  ball.y += ball.vy;
+
+  ball.vy += gravity; // gravity effect
+
+  // Floor collision
+  if (ball.y + ballRadius > HEIGHT - 100) {
+    ball.y = HEIGHT - 100 - ballRadius;
+    ball.vy *= -0.5; // bounce with damping
+    ball.vx *= 0.7; // friction slows horizontal speed
+
+    if (Math.abs(ball.vy) < 1) {
+      ball.vy = 0;
+    }
+    if (Math.abs(ball.vx) < 0.5) {
+      ball.vx = 0;
+    }
+    if (ball.vx === 0 && ball.vy === 0) {
+      ball.moving = false;
+      if (!ball.scored) {
+        score = 0; // reset score on miss
+        updateScore();
+      }
+      setTimeout(resetBall, 1000);
+    }
+  }
+
+}
