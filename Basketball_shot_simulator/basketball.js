@@ -154,5 +154,19 @@ function updateBall() {
       setTimeout(resetBall, 1000);
     }
   }
-
+  // Hoop scoring detection - ball passes through rim from top
+  if (
+    ball.x > hoopX - rimRadius &&
+    ball.x < hoopX + rimRadius &&
+    ball.y > hoopY - ballRadius &&
+    ball.y < hoopY + rimRadius &&
+    ball.vy > 0 &&
+    !ball.scored
+  ) {
+    ball.scored = true;
+    score++;
+    updateScore();
+    createScoreParticles(hoopX, hoopY);
+    setTimeout(resetBall, 1500);
+  }
 }
