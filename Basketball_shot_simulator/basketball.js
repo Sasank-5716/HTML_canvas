@@ -115,3 +115,12 @@ function resetBall() {
   powerDirection = 1;
   drawPowerMeter();
 }
+
+function shootBall() {
+  const angle = Math.PI / 4; // 45 degrees for nice arc
+  const velocity = power;
+
+  ball.vx = velocity * Math.cos(angle);
+  ball.vy = -velocity * Math.sin(angle);
+  ball.moving = true;
+}
