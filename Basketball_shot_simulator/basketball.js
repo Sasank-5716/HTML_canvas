@@ -174,3 +174,17 @@ function updateBall() {
 function updateScore() {
   scoreElem.textContent = score;
 }
+
+function createScoreParticles(x, y) {
+  for (let i = 0; i < 20; i++) {
+    particles.push({
+      x: x,
+      y: y,
+      vx: (Math.random() - 0.5) * 6,
+      vy: (Math.random() - 1.5) * 6,
+      alpha: 1,
+      radius: 3 + Math.random() * 2,
+      color: `hsl(${30 + Math.random() * 40}, 100%, 60%)`,
+    });
+  }
+}
