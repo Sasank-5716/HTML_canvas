@@ -213,3 +213,23 @@ function drawParticles() {
     ctx.shadowBlur = 0;
   });
 }
+
+function drawPowerArrow() {
+  if (!charging) return;
+  const arrowLength = power * 10;
+  const startX = ball.x;
+  const startY = ball.y;
+  const angle = Math.PI / 4;
+
+  ctx.save();
+  ctx.strokeStyle = '#ffb300';
+  ctx.fillStyle = '#ffb300';
+  ctx.lineWidth = 4;
+  ctx.shadowColor = '#ffb300';
+  ctx.shadowBlur = 10;
+
+  ctx.beginPath();
+  ctx.moveTo(startX, startY);
+  ctx.lineTo(startX + arrowLength * Math.cos(angle), startY - arrowLength * Math.sin(angle));
+  ctx.stroke();
+}
