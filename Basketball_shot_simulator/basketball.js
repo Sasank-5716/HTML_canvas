@@ -272,3 +272,20 @@ function chargePower() {
   }
   drawPowerMeter();
 }
+
+// Event handlers
+canvas.addEventListener('mousedown', () => {
+  if (ball.moving) return;
+  charging = true;
+});
+
+canvas.addEventListener('mouseup', () => {
+  if (!charging) return;
+  charging = false;
+  if (power > 0) {
+    shootBall();
+  }
+  power = 0;
+  powerDirection = 1;
+  drawPowerMeter();
+});
