@@ -245,3 +245,30 @@ function drawPowerArrow() {
 
   ctx.restore();
 }
+
+function gameLoop() {
+  ctx.clearRect(0, 0, WIDTH, HEIGHT);
+
+  drawBackground();
+  drawBall();
+  drawPowerArrow();
+  drawParticles();
+
+  updateBall();
+  updateParticles();
+
+  requestAnimationFrame(gameLoop);
+}
+
+function chargePower() {
+  if (!charging) return;
+  power += powerDirection * 0.3;
+  if (power >= maxPower) {
+    powerDirection = -1;
+    power = maxPower;
+  } else if (power <= 0) {
+    powerDirection = 1;
+    power = 0;
+  }
+  drawPowerMeter();
+}
