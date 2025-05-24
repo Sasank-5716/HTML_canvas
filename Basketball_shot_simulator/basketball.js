@@ -313,3 +313,9 @@ window.addEventListener('keyup', (e) => {
     }
   }
 });
+
+// Start the game
+resetBall();
+updateScore();
+gameLoop();
+setInterval(chargePower, 16);
