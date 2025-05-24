@@ -201,3 +201,15 @@ function updateParticles() {
     }
   }
 }
+
+function drawParticles() {
+  particles.forEach((p) => {
+    ctx.beginPath();
+    ctx.fillStyle = `rgba(255, 140, 0, ${p.alpha})`;
+    ctx.shadowColor = p.color;
+    ctx.shadowBlur = 10;
+    ctx.arc(p.x, p.y, p.radius, 0, 2 * Math.PI);
+    ctx.fill();
+    ctx.shadowBlur = 0;
+  });
+}
