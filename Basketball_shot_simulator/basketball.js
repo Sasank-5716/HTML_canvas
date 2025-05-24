@@ -232,4 +232,16 @@ function drawPowerArrow() {
   ctx.moveTo(startX, startY);
   ctx.lineTo(startX + arrowLength * Math.cos(angle), startY - arrowLength * Math.sin(angle));
   ctx.stroke();
+
+  // Arrowhead
+  const arrowX = startX + arrowLength * Math.cos(angle);
+  const arrowY = startY - arrowLength * Math.sin(angle);
+  ctx.beginPath();
+  ctx.moveTo(arrowX, arrowY);
+  ctx.lineTo(arrowX - 10 * Math.cos(angle - Math.PI / 6), arrowY + 10 * Math.sin(angle - Math.PI / 6));
+  ctx.lineTo(arrowX - 10 * Math.cos(angle + Math.PI / 6), arrowY + 10 * Math.sin(angle + Math.PI / 6));
+  ctx.closePath();
+  ctx.fill();
+
+  ctx.restore();
 }
