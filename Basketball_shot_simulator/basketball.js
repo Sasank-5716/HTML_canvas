@@ -289,3 +289,27 @@ canvas.addEventListener('mouseup', () => {
   powerDirection = 1;
   drawPowerMeter();
 });
+
+window.addEventListener('keydown', (e) => {
+  if (e.code === 'Space') {
+    e.preventDefault();
+    if (!charging && !ball.moving) {
+      charging = true;
+    }
+  }
+});
+
+window.addEventListener('keyup', (e) => {
+  if (e.code === 'Space') {
+    e.preventDefault();
+    if (charging) {
+      charging = false;
+      if (power > 0) {
+        shootBall();
+      }
+      power = 0;
+      powerDirection = 1;
+      drawPowerMeter();
+    }
+  }
+});
