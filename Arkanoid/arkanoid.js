@@ -15,3 +15,16 @@ const paddle = {
   color: '#00bfff',
   radius: 10,
 };
+
+// Ball properties
+const ball = {
+  x: WIDTH / 2,
+  y: HEIGHT / 2,
+  radius: 12,
+  color: '#ff6f61',
+  speedX: 4,
+  speedY: -6,
+  gravity: 0.25,
+  gravitySpeed: 0,
+  maxSpeedY: 12,
+};
