@@ -40,3 +40,25 @@ const brick = {
   offsetLeft: 45,
   colors: ['#ff4e50', '#fc913a', '#f9d423', '#eae374', '#e1f5c4'],
 };
+
+let bricks = [];
+let score = 0;
+let lives = 3;
+let isGameOver = false;
+let isGameWon = false;
+
+// Initialize bricks
+function initBricks() {
+  bricks = [];
+  for (let r = 0; r < brick.rowCount; r++) {
+    bricks[r] = [];
+    for (let c = 0; c < brick.columnCount; c++) {
+      bricks[r][c] = { 
+        x: 0, 
+        y: 0, 
+        status: 1, 
+        color: brick.colors[r % brick.colors.length] 
+      };
+    }
+  }
+}
