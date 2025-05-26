@@ -1,5 +1,5 @@
-const canvas = document.getElementById('gameCanvas');
-const ctx = canvas.getContext('2d');
+const canvas = document.getElementById("gameCanvas");
+const ctx = canvas.getContext("2d");
 
 const WIDTH = canvas.width;
 const HEIGHT = canvas.height;
@@ -12,7 +12,7 @@ const paddle = {
   y: HEIGHT - 40,
   speed: 8,
   dx: 0,
-  color: '#00bfff',
+  color: "#00bfff",
   radius: 10,
 };
 
@@ -21,7 +21,7 @@ const ball = {
   x: WIDTH / 2,
   y: HEIGHT / 2,
   radius: 12,
-  color: '#ff6f61',
+  color: "#ff6f61",
   speedX: 4,
   speedY: -6,
   gravity: 0.25,
@@ -38,7 +38,7 @@ const brick = {
   padding: 12,
   offsetTop: 60,
   offsetLeft: 45,
-  colors: ['#ff4e50', '#fc913a', '#f9d423', '#eae374', '#e1f5c4'],
+  colors: ["#ff4e50", "#fc913a", "#f9d423", "#eae374", "#e1f5c4"],
 };
 
 let bricks = [];
@@ -53,11 +53,11 @@ function initBricks() {
   for (let r = 0; r < brick.rowCount; r++) {
     bricks[r] = [];
     for (let c = 0; c < brick.columnCount; c++) {
-      bricks[r][c] = { 
-        x: 0, 
-        y: 0, 
-        status: 1, 
-        color: brick.colors[r % brick.colors.length] 
+      bricks[r][c] = {
+        x: 0,
+        y: 0,
+        status: 1,
+        color: brick.colors[r % brick.colors.length],
       };
     }
   }
@@ -89,11 +89,25 @@ function drawPaddle() {
 // Draw ball with shadow/glow
 function drawBall() {
   ctx.beginPath();
-  ctx.shadowColor = 'rgba(255, 111, 97, 0.7)';
+  ctx.shadowColor = "rgba(255, 111, 97, 0.7)";
   ctx.shadowBlur = 15;
   ctx.fillStyle = ball.color;
   ctx.arc(ball.x, ball.y, ball.radius, 0, Math.PI * 2);
   ctx.fill();
   ctx.shadowBlur = 0;
   ctx.closePath();
+}
+
+// Draw bricks
+function drawBricks() {
+  for (let r = 0; r < brick.rowCount; r++) {
+    for (let c = 0; c < brick.columnCount; c++) {
+      if (bricks[r][c].status === 1) {
+        const brickX = brick.offsetLeft + c * (brick.width + brick.padding);
+        const brickY = brick.offsetTop + r * (brick.height + brick.padding);
+        bricks[r][c].x = brickX;
+        bricks[r][c].y = brickY;
+      }
+    }
+  }
 }
