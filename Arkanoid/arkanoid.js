@@ -107,6 +107,17 @@ function drawBricks() {
         const brickY = brick.offsetTop + r * (brick.height + brick.padding);
         bricks[r][c].x = brickX;
         bricks[r][c].y = brickY;
+
+        // Brick with gradient fill
+        const grad = ctx.createLinearGradient(brickX, brickY, brickX + brick.width, brickY + brick.height);
+        grad.addColorStop(0, bricks[r][c].color);
+        grad.addColorStop(1, '#222');
+
+        ctx.fillStyle = grad;
+        ctx.shadowColor = bricks[r][c].color;
+        ctx.shadowBlur = 10;
+        ctx.fillRect(brickX, brickY, brick.width, brick.height);
+        ctx.shadowBlur = 0;
       }
     }
   }
