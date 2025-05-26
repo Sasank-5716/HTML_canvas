@@ -85,3 +85,15 @@ function drawPaddle() {
   ctx.closePath();
   ctx.fill();
 }
+
+// Draw ball with shadow/glow
+function drawBall() {
+  ctx.beginPath();
+  ctx.shadowColor = 'rgba(255, 111, 97, 0.7)';
+  ctx.shadowBlur = 15;
+  ctx.fillStyle = ball.color;
+  ctx.arc(ball.x, ball.y, ball.radius, 0, Math.PI * 2);
+  ctx.fill();
+  ctx.shadowBlur = 0;
+  ctx.closePath();
+}
