@@ -28,3 +28,15 @@ const ball = {
   gravitySpeed: 0,
   maxSpeedY: 12,
 };
+
+// Brick properties
+const brick = {
+  rowCount: 5,
+  columnCount: 9,
+  width: 70,
+  height: 25,
+  padding: 12,
+  offsetTop: 60,
+  offsetLeft: 45,
+  colors: ['#ff4e50', '#fc913a', '#f9d423', '#eae374', '#e1f5c4'],
+};
