@@ -157,4 +157,12 @@ function drawMessage(text) {
 function movePaddle() {
   paddle.x += paddle.dx;
 
+  // Update paddle position based on dx
+function movePaddle() {
+  paddle.x += paddle.dx;
+
+  // Prevent going out of bounds
+  if (paddle.x < 0) paddle.x = 0;
+  if (paddle.x + paddle.width > WIDTH) paddle.x = WIDTH - paddle.width;
+}
 }
