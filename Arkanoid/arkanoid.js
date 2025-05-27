@@ -152,3 +152,9 @@ function drawMessage(text) {
   ctx.fillText(text, WIDTH / 2, HEIGHT / 2 + 15);
   ctx.textAlign = 'start';
 }
+
+// Update paddle position based on dx
+function movePaddle() {
+  paddle.x += paddle.dx;
+
+}
