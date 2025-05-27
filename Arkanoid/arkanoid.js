@@ -118,6 +118,11 @@ function drawBricks() {
         ctx.shadowBlur = 10;
         ctx.fillRect(brickX, brickY, brick.width, brick.height);
         ctx.shadowBlur = 0;
+
+        // Brick border
+        ctx.strokeStyle = '#0008';
+        ctx.lineWidth = 2;
+        ctx.strokeRect(brickX, brickY, brick.width, brick.height);
       }
     }
   }
