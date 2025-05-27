@@ -140,3 +140,15 @@ function drawLives() {
   ctx.fillStyle = '#fff';
   ctx.fillText(`Lives: ${lives}`, WIDTH - 110, 30);
 }
+
+// Draw game over or win message
+function drawMessage(text) {
+  ctx.fillStyle = 'rgba(0, 0, 0, 0.7)';
+  ctx.fillRect(0, HEIGHT / 2 - 60, WIDTH, 120);
+
+  ctx.font = '48px Segoe UI';
+  ctx.fillStyle = '#fff';
+  ctx.textAlign = 'center';
+  ctx.fillText(text, WIDTH / 2, HEIGHT / 2 + 15);
+  ctx.textAlign = 'start';
+}
