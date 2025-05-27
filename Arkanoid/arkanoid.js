@@ -134,3 +134,9 @@ function drawScore() {
   ctx.fillStyle = '#fff';
   ctx.fillText(`Score: ${score}`, 20, 30);
 }
+
+function drawLives() {
+  ctx.font = '20px Segoe UI';
+  ctx.fillStyle = '#fff';
+  ctx.fillText(`Lives: ${lives}`, WIDTH - 110, 30);
+}
