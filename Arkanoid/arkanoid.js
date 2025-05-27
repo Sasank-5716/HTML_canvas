@@ -127,3 +127,10 @@ function drawBricks() {
     }
   }
 }
+
+// Draw score and lives
+function drawScore() {
+  ctx.font = '20px Segoe UI';
+  ctx.fillStyle = '#fff';
+  ctx.fillText(`Score: ${score}`, 20, 30);
+}
