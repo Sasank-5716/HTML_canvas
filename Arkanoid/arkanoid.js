@@ -205,3 +205,15 @@ function moveBall() {
     }
   }
 }
+
+// Reset ball and paddle positions after life lost
+function resetBallAndPaddle() {
+  ball.x = WIDTH / 2;
+  ball.y = HEIGHT / 2;
+  ball.speedX = 4 * (Math.random() < 0.5 ? 1 : -1);
+  ball.speedY = -6;
+  ball.gravitySpeed = 0;
+
+  paddle.x = WIDTH / 2 - paddle.width / 2;
+  paddle.dx = 0;
+}
