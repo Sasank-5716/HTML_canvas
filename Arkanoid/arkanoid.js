@@ -177,4 +177,15 @@ function moveBall() {
   if (ball.speedY > ball.maxSpeedY) {
     ball.speedY = ball.maxSpeedY;
   }
+   ball.x += ball.speedX;
+  ball.y += ball.speedY;
+
+  // Bounce off left and right walls
+  if (ball.x + ball.radius > WIDTH) {
+    ball.x = WIDTH - ball.radius;
+    ball.speedX = -ball.speedX;
+  } else if (ball.x - ball.radius < 0) {
+    ball.x = ball.radius;
+    ball.speedX = -ball.speedX;
+  }
 }
