@@ -173,4 +173,8 @@ function moveBall() {
   ball.gravitySpeed += ball.gravity;
   ball.speedY += ball.gravitySpeed;
 
+   // Limit max downward speed to avoid excessive acceleration
+  if (ball.speedY > ball.maxSpeedY) {
+    ball.speedY = ball.maxSpeedY;
+  }
 }
