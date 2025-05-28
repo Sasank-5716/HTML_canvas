@@ -188,4 +188,11 @@ function moveBall() {
     ball.x = ball.radius;
     ball.speedX = -ball.speedX;
   }
+
+  // Bounce off top wall
+  if (ball.y - ball.radius < 0) {
+    ball.y = ball.radius;
+    ball.speedY = -ball.speedY;
+    ball.gravitySpeed = 0; // Reset gravity effect on bounce
+  }
 }
