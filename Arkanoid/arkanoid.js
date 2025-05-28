@@ -166,3 +166,11 @@ function movePaddle() {
   if (paddle.x + paddle.width > WIDTH) paddle.x = WIDTH - paddle.width;
 }
 }
+
+// Update ball position and apply gravity
+function moveBall() {
+  // Apply gravity to vertical speed
+  ball.gravitySpeed += ball.gravity;
+  ball.speedY += ball.gravitySpeed;
+
+}
