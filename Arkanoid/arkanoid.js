@@ -195,4 +195,13 @@ function moveBall() {
     ball.speedY = -ball.speedY;
     ball.gravitySpeed = 0; // Reset gravity effect on bounce
   }
+
+  // Ball falls below paddle (lose life)
+  if (ball.y - ball.radius > HEIGHT) {
+    lives--;
+    resetBallAndPaddle();
+    if (lives <= 0) {
+      isGameOver = true;
+    }
+  }
 }
