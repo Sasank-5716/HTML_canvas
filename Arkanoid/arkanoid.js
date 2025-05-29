@@ -217,3 +217,18 @@ function resetBallAndPaddle() {
   paddle.x = WIDTH / 2 - paddle.width / 2;
   paddle.dx = 0;
 }
+
+// Detect collision between ball and paddle
+function paddleCollision() {
+  if (
+    ball.x + ball.radius > paddle.x &&
+    ball.x - ball.radius < paddle.x + paddle.width &&
+    ball.y + ball.radius > paddle.y &&
+    ball.y - ball.radius < paddle.y + paddle.height
+  ) {
+    // Reflect ball upward with some horizontal velocity change based on hit position
+    ball.y = paddle.y - ball.radius;
+    ball.speedY = -Math.abs(ball.speedY) * 0.9; 
+    ball.gravitySpeed = 0; 
+  }
+}
