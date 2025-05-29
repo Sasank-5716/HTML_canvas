@@ -253,8 +253,12 @@ function brickCollision() {
           b.status = 0;
           score += 10;
 
-          
-          }
+          // Check win condition
+          if (score === brick.rowCount * brick.columnCount * 10) {
+            isGameWon = true;// Check win condition
+          if (score === brick.rowCount * brick.columnCount * 10) {
+            isGameWon = true;
+          }}
         }
       }
     }
