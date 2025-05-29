@@ -235,3 +235,28 @@ function paddleCollision() {
     ball.speedX = (hitPos - 0.5) * 10;
   }
 }
+
+// Detect collision between ball and bricks
+function brickCollision() {
+  for (let r = 0; r < brick.rowCount; r++) {
+    for (let c = 0; c < brick.columnCount; c++) {
+      const b = bricks[r][c];
+      if (b.status === 1) {
+        if (
+          ball.x + ball.radius > b.x &&
+          ball.x - ball.radius < b.x + brick.width &&
+          ball.y + ball.radius > b.y &&
+          ball.y - ball.radius < b.y + brick.height
+        ) {
+          ball.speedY = -ball.speedY;
+          ball.gravitySpeed = 0; // Reset gravity effect on bounce
+          b.status = 0;
+          score += 10;
+
+          
+          }
+        }
+      }
+    }
+  }
+}
