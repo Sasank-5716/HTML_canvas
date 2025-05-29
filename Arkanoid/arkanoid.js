@@ -273,3 +273,14 @@ function keyDownHandler(e) {
     paddle.dx = -paddle.speed;
   }
 }
+
+function keyUpHandler(e) {
+  if (
+    e.key === 'ArrowRight' ||
+    e.key === 'Right' ||
+    e.key === 'ArrowLeft' ||
+    e.key === 'Left'
+  ) {
+    paddle.dx = 0;
+  }
+}
