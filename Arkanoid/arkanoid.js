@@ -264,3 +264,12 @@ function brickCollision() {
     }
   }
 }
+
+// Handle keyboard input
+function keyDownHandler(e) {
+  if (e.key === 'ArrowRight' || e.key === 'Right') {
+    paddle.dx = paddle.speed;
+  } else if (e.key === 'ArrowLeft' || e.key === 'Left') {
+    paddle.dx = -paddle.speed;
+  }
+}
