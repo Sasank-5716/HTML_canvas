@@ -230,5 +230,8 @@ function paddleCollision() {
     ball.y = paddle.y - ball.radius;
     ball.speedY = -Math.abs(ball.speedY) * 0.9; 
     ball.gravitySpeed = 0; 
+
+     const hitPos = (ball.x - paddle.x) / paddle.width;
+    ball.speedX = (hitPos - 0.5) * 10;
   }
 }
