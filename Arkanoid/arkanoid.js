@@ -299,5 +299,10 @@ function draw() {
     drawMessage('Game Over! Refresh to play again.');
     return;
   }
+
+  if (isGameWon) {
+    drawMessage('You Win! Congratulations!');
+    return;
+  }
 }
 
