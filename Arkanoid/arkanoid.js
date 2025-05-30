@@ -284,3 +284,14 @@ function keyUpHandler(e) {
     paddle.dx = 0;
   }
 }
+
+// Main game loop
+function draw() {
+  ctx.clearRect(0, 0, WIDTH, HEIGHT);
+
+  drawBricks();
+  drawPaddle();
+  drawBall();
+  drawScore();
+  drawLives();
+}
