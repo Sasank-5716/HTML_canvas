@@ -304,5 +304,12 @@ function draw() {
     drawMessage('You Win! Congratulations!');
     return;
   }
+   movePaddle();
+  moveBall();
+  paddleCollision();
+  brickCollision();
+
+  requestAnimationFrame(draw);
 }
+
 
