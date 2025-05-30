@@ -312,4 +312,10 @@ function draw() {
   requestAnimationFrame(draw);
 }
 
+// Initialize game
+function init() {
+  initBricks();
+  resetBallAndPaddle();
+  draw();
+}
 
