@@ -294,4 +294,10 @@ function draw() {
   drawBall();
   drawScore();
   drawLives();
+
+  if (isGameOver) {
+    drawMessage('Game Over! Refresh to play again.');
+    return;
+  }
 }
+
