@@ -41,3 +41,13 @@ const player = {
   speed: 3,
   onGround: false,
 };
+
+// Keyboard input
+const keys = {
+  left: false,
+  right: false,
+  gravityLeft: false,
+  gravityRight: false,
+  gravityUp: false,
+  gravityDown: false,
+};
