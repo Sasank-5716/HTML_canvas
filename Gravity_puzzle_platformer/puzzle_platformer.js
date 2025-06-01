@@ -51,3 +51,20 @@ const keys = {
   gravityUp: false,
   gravityDown: false,
 };
+
+function drawLevel() {
+  for (let row = 0; row < level.length; row++) {
+    for (let col = 0; col < level[row].length; col++) {
+      const tile = level[row][col];
+      if (tile === 1) {
+        ctx.fillStyle = '#444';
+        ctx.fillRect(col * TILE_SIZE, row * TILE_SIZE, TILE_SIZE, TILE_SIZE);
+        ctx.strokeStyle = '#666';
+        ctx.strokeRect(col * TILE_SIZE, row * TILE_SIZE, TILE_SIZE, TILE_SIZE);
+      } else if (tile === 2) {
+        ctx.fillStyle = '#0f0';
+        ctx.fillRect(col * TILE_SIZE, row * TILE_SIZE, TILE_SIZE, TILE_SIZE);
+      }
+    }
+  }
+}
