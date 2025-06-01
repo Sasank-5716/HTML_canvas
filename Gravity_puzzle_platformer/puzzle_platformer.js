@@ -68,3 +68,17 @@ function drawLevel() {
     }
   }
 }
+
+function drawPlayer() {
+  ctx.fillStyle = '#f39c12';
+  ctx.fillRect(player.x, player.y, player.width, player.height);
+  // Draw eyes to indicate gravity direction
+  ctx.fillStyle = '#222';
+  const eyeSize = 6;
+  let eyeX1, eyeY1, eyeX2, eyeY2;
+  
+  ctx.beginPath();
+  ctx.arc(eyeX1, eyeY1, eyeSize / 2, 0, Math.PI * 2);
+  ctx.arc(eyeX2, eyeY2, eyeSize / 2, 0, Math.PI * 2);
+  ctx.fill();
+}
