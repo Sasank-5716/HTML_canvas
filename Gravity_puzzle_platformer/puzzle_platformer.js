@@ -76,7 +76,32 @@ function drawPlayer() {
   ctx.fillStyle = '#222';
   const eyeSize = 6;
   let eyeX1, eyeY1, eyeX2, eyeY2;
-  
+  switch (gravity) {
+    case GRAVITY_DIRECTIONS.DOWN:
+      eyeX1 = player.x + 10;
+      eyeY1 = player.y + 10;
+      eyeX2 = player.x + player.width - 16;
+      eyeY2 = player.y + 10;
+      break;
+    case GRAVITY_DIRECTIONS.UP:
+      eyeX1 = player.x + 10;
+      eyeY1 = player.y + player.height - 16;
+      eyeX2 = player.x + player.width - 16;
+      eyeY2 = player.y + player.height - 16;
+      break;
+    case GRAVITY_DIRECTIONS.LEFT:
+      eyeX1 = player.x + player.width - 16;
+      eyeY1 = player.y + 10;
+      eyeX2 = player.x + player.width - 16;
+      eyeY2 = player.y + player.height - 16;
+      break;
+    case GRAVITY_DIRECTIONS.RIGHT:
+      eyeX1 = player.x + 10;
+      eyeY1 = player.y + 10;
+      eyeX2 = player.x + 10;
+      eyeY2 = player.y + player.height - 16;
+      break;
+  }
   ctx.beginPath();
   ctx.arc(eyeX1, eyeY1, eyeSize / 2, 0, Math.PI * 2);
   ctx.arc(eyeX2, eyeY2, eyeSize / 2, 0, Math.PI * 2);
