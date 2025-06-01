@@ -29,3 +29,15 @@ const level = [
   [1,0,0,0,0,0,0,0,0,0,1,0,1,0,0,1],
   [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
 ];
+
+// Player object
+const player = {
+  x: TILE_SIZE * 2,
+  y: TILE_SIZE * 9,
+  width: PLAYER_SIZE,
+  height: PLAYER_SIZE,
+  velocityX: 0,
+  velocityY: 0,
+  speed: 3,
+  onGround: false,
+};
