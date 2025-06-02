@@ -111,3 +111,12 @@ function drawPlayer() {
 function rectIntersect(ax, ay, aw, ah, bx, by, bw, bh) {
   return ax < bx + bw && ax + aw > bx && ay < by + bh && ay + ah > by;
 }
+
+function getTileAt(x, y) {
+  const col = Math.floor(x / TILE_SIZE);
+  const row = Math.floor(y / TILE_SIZE);
+  if (row < 0 || row >= level.length || col < 0 || col >= level[0].length) {
+    return 1; // Treat out of bounds as solid
+  }
+  return level[row][col];
+}
