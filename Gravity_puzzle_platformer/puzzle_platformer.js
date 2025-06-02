@@ -1,5 +1,5 @@
-const canvas = document.getElementById('gameCanvas');
-const ctx = canvas.getContext('2d');
+const canvas = document.getElementById("gameCanvas");
+const ctx = canvas.getContext("2d");
 
 const GRAVITY_MAGNITUDE = 0.5;
 const PLAYER_SIZE = 40;
@@ -17,17 +17,17 @@ let gravity = GRAVITY_DIRECTIONS.DOWN;
 
 // Level layout: 0 = empty, 1 = solid block, 2 = goal
 const level = [
-  [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
-  [1,0,0,0,0,0,0,0,0,0,0,0,0,0,2,1],
-  [1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1],
-  [1,0,0,0,0,0,0,1,1,1,0,0,0,0,0,1],
-  [1,0,0,0,0,0,0,1,0,1,0,0,0,0,0,1],
-  [1,0,0,0,0,0,0,1,0,1,0,0,0,0,0,1],
-  [1,0,0,0,0,0,0,1,0,1,1,1,1,0,0,1],
-  [1,0,0,0,0,0,0,1,0,0,0,0,1,0,0,1],
-  [1,0,0,0,0,0,0,1,1,1,1,0,1,0,0,1],
-  [1,0,0,0,0,0,0,0,0,0,1,0,1,0,0,1],
-  [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
+  [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+  [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 1],
+  [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
+  [1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 1],
+  [1, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 1],
+  [1, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 1],
+  [1, 0, 0, 0, 0, 0, 0, 1, 0, 1, 1, 1, 1, 0, 0, 1],
+  [1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 1],
+  [1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 0, 1, 0, 0, 1],
+  [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0, 0, 1],
+  [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
 ];
 
 // Player object
@@ -57,12 +57,12 @@ function drawLevel() {
     for (let col = 0; col < level[row].length; col++) {
       const tile = level[row][col];
       if (tile === 1) {
-        ctx.fillStyle = '#444';
+        ctx.fillStyle = "#444";
         ctx.fillRect(col * TILE_SIZE, row * TILE_SIZE, TILE_SIZE, TILE_SIZE);
-        ctx.strokeStyle = '#666';
+        ctx.strokeStyle = "#666";
         ctx.strokeRect(col * TILE_SIZE, row * TILE_SIZE, TILE_SIZE, TILE_SIZE);
       } else if (tile === 2) {
-        ctx.fillStyle = '#0f0';
+        ctx.fillStyle = "#0f0";
         ctx.fillRect(col * TILE_SIZE, row * TILE_SIZE, TILE_SIZE, TILE_SIZE);
       }
     }
@@ -70,10 +70,10 @@ function drawLevel() {
 }
 
 function drawPlayer() {
-  ctx.fillStyle = '#f39c12';
+  ctx.fillStyle = "#f39c12";
   ctx.fillRect(player.x, player.y, player.width, player.height);
   // Draw eyes to indicate gravity direction
-  ctx.fillStyle = '#222';
+  ctx.fillStyle = "#222";
   const eyeSize = 6;
   let eyeX1, eyeY1, eyeX2, eyeY2;
   switch (gravity) {
@@ -141,10 +141,24 @@ function updatePlayer() {
   // Horizontal movement (perpendicular to gravity)
   // Determine axis perpendicular to gravity
   let perpAxis = { x: 0, y: 0 };
-  if (gravity === GRAVITY_DIRECTIONS.DOWN || gravity === GRAVITY_DIRECTIONS.UP) {
+  if (
+    gravity === GRAVITY_DIRECTIONS.DOWN ||
+    gravity === GRAVITY_DIRECTIONS.UP
+  ) {
     perpAxis = { x: 1, y: 0 };
   } else {
     perpAxis = { x: 0, y: 1 };
   }
-
+  // Move left/right relative to gravity
+  if (keys.left) {
+    player.velocityX = -player.speed * perpAxis.x;
+    player.velocityY = -player.speed * perpAxis.y;
+  } else if (keys.right) {
+    player.velocityX = player.speed * perpAxis.x;
+    player.velocityY = player.speed * perpAxis.y;
+  } else {
+    // Slow down horizontal movement
+    player.velocityX *= 0.8;
+    player.velocityY *= 0.8;
+  }
 }
