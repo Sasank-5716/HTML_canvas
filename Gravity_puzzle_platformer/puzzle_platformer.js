@@ -120,3 +120,19 @@ function getTileAt(x, y) {
   }
   return level[row][col];
 }
+
+function checkCollision(x, y, w, h) {
+  // Check all corners for collision with solid tiles
+  const points = [
+    { x: x, y: y },
+    { x: x + w, y: y },
+    { x: x, y: y + h },
+    { x: x + w, y: y + h },
+  ];
+  for (const p of points) {
+    if (getTileAt(p.x, p.y) === 1) {
+      return true;
+    }
+  }
+  return false;
+}
