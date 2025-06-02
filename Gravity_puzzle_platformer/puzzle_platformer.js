@@ -161,4 +161,7 @@ function updatePlayer() {
     player.velocityX *= 0.8;
     player.velocityY *= 0.8;
   }
+  // Apply gravity acceleration
+  player.velocityX += gravity.x * GRAVITY_MAGNITUDE;
+  player.velocityY += gravity.y * GRAVITY_MAGNITUDE;
 }
