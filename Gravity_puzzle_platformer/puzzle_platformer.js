@@ -107,3 +107,7 @@ function drawPlayer() {
   ctx.arc(eyeX2, eyeY2, eyeSize / 2, 0, Math.PI * 2);
   ctx.fill();
 }
+
+function rectIntersect(ax, ay, aw, ah, bx, by, bw, bh) {
+  return ax < bx + bw && ax + aw > bx && ay < by + bh && ay + ah > by;
+}
