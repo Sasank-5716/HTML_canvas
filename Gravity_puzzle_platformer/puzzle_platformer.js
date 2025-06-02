@@ -136,3 +136,15 @@ function checkCollision(x, y, w, h) {
   }
   return false;
 }
+
+function updatePlayer() {
+  // Horizontal movement (perpendicular to gravity)
+  // Determine axis perpendicular to gravity
+  let perpAxis = { x: 0, y: 0 };
+  if (gravity === GRAVITY_DIRECTIONS.DOWN || gravity === GRAVITY_DIRECTIONS.UP) {
+    perpAxis = { x: 1, y: 0 };
+  } else {
+    perpAxis = { x: 0, y: 1 };
+  }
+
+}
