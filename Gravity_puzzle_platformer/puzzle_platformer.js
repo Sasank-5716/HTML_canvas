@@ -191,3 +191,11 @@ function updatePlayer() {
   }
 }
 
+function resetGame() {
+  player.x = TILE_SIZE * 2;
+  player.y = TILE_SIZE * 9;
+  player.velocityX = 0;
+  player.velocityY = 0;
+  gravity = GRAVITY_DIRECTIONS.DOWN;
+}
+
