@@ -168,5 +168,12 @@ function updatePlayer() {
   // Calculate tentative new position
   let newX = player.x + player.velocityX;
   let newY = player.y + player.velocityY;
+
+  // Check horizontal collisions
+  if (!checkCollision(newX, player.y, player.width, player.height)) {
+    player.x = newX;
+  } else {
+    player.velocityX = 0;
+  }
 }
 
