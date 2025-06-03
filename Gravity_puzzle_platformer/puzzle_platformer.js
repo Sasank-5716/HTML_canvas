@@ -175,5 +175,12 @@ function updatePlayer() {
   } else {
     player.velocityX = 0;
   }
+
+  // Check vertical collisions
+  if (!checkCollision(player.x, newY, player.width, player.height)) {
+    player.y = newY;
+  } else {
+    player.velocityY = 0;
+  }
 }
 
