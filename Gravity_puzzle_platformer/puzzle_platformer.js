@@ -199,3 +199,9 @@ function resetGame() {
   gravity = GRAVITY_DIRECTIONS.DOWN;
 }
 
+function handleGravityChange() {
+  if (keys.gravityDown) gravity = GRAVITY_DIRECTIONS.DOWN;
+  else if (keys.gravityUp) gravity = GRAVITY_DIRECTIONS.UP;
+  else if (keys.gravityLeft) gravity = GRAVITY_DIRECTIONS.LEFT;
+  else if (keys.gravityRight) gravity = GRAVITY_DIRECTIONS.RIGHT;
+}
