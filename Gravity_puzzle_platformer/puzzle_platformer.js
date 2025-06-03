@@ -164,4 +164,9 @@ function updatePlayer() {
   // Apply gravity acceleration
   player.velocityX += gravity.x * GRAVITY_MAGNITUDE;
   player.velocityY += gravity.y * GRAVITY_MAGNITUDE;
+
+  // Calculate tentative new position
+  let newX = player.x + player.velocityX;
+  let newY = player.y + player.velocityY;
 }
+
