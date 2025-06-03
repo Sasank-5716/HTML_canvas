@@ -182,5 +182,12 @@ function updatePlayer() {
   } else {
     player.velocityY = 0;
   }
+   // Check if player reached goal tile
+  const playerCenterX = player.x + player.width / 2;
+  const playerCenterY = player.y + player.height / 2;
+  if (getTileAt(playerCenterX, playerCenterY) === 2) {
+    alert('Level Complete! Congratulations!');
+    resetGame();
+  }
 }
 
