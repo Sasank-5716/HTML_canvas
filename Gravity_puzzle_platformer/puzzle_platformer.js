@@ -205,3 +205,13 @@ function handleGravityChange() {
   else if (keys.gravityLeft) gravity = GRAVITY_DIRECTIONS.LEFT;
   else if (keys.gravityRight) gravity = GRAVITY_DIRECTIONS.RIGHT;
 }
+
+function drawGravityIndicator() {
+  ctx.fillStyle = '#fff';
+  ctx.font = '18px Arial';
+  ctx.textAlign = 'left';
+  ctx.fillText('Gravity: ' + 
+    (gravity === GRAVITY_DIRECTIONS.DOWN ? 'Down' :
+    gravity === GRAVITY_DIRECTIONS.UP ? 'Up' :
+    gravity === GRAVITY_DIRECTIONS.LEFT ? 'Left' : 'Right'), 10, 580);
+}
