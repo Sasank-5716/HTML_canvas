@@ -215,3 +215,13 @@ function drawGravityIndicator() {
     gravity === GRAVITY_DIRECTIONS.UP ? 'Up' :
     gravity === GRAVITY_DIRECTIONS.LEFT ? 'Left' : 'Right'), 10, 580);
 }
+
+function gameLoop() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  drawLevel();
+  handleGravityChange();
+  updatePlayer();
+  drawPlayer();
+  drawGravityIndicator();
+  requestAnimationFrame(gameLoop);
+}
