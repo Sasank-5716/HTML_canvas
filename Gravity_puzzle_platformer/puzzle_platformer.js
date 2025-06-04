@@ -225,3 +225,33 @@ function gameLoop() {
   drawGravityIndicator();
   requestAnimationFrame(gameLoop);
 }
+
+// Keyboard event listeners
+window.addEventListener('keydown', (e) => {
+  switch (e.key) {
+    case 'ArrowLeft':
+    case 'a':
+      keys.left = true;
+      break;
+    case 'ArrowRight':
+    case 'd':
+      keys.right = true;
+      break;
+    case 'ArrowDown':
+      keys.gravityDown = true;
+      keys.gravityUp = keys.gravityLeft = keys.gravityRight = false;
+      break;
+    case 'ArrowUp':
+      keys.gravityUp = true;
+      keys.gravityDown = keys.gravityLeft = keys.gravityRight = false;
+      break;
+    case 'q':
+      keys.gravityLeft = true;
+      keys.gravityDown = keys.gravityUp = keys.gravityRight = false;
+      break;
+    case 'e':
+      keys.gravityRight = true;
+      keys.gravityDown = keys.gravityUp = keys.gravityLeft = false;
+      break;
+  }
+});
