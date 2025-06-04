@@ -268,3 +268,7 @@ window.addEventListener('keyup', (e) => {
       break;
   }
 });
+
+// Initialize game
+resetGame();
+gameLoop();
