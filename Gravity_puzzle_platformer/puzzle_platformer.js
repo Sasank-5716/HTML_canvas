@@ -255,3 +255,16 @@ window.addEventListener('keydown', (e) => {
       break;
   }
 });
+
+window.addEventListener('keyup', (e) => {
+  switch (e.key) {
+    case 'ArrowLeft':
+    case 'a':
+      keys.left = false;
+      break;
+    case 'ArrowRight':
+    case 'd':
+      keys.right = false;
+      break;
+  }
+});
