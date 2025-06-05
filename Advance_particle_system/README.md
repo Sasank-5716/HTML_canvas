@@ -17,7 +17,7 @@ Toggle Gravity: Enable or disable gravity.
 Reset: Reinitialize all particles.
 
 ## Demo
-Screenshot
+![Gameplay](advance_particle_sysytem.png) 
 
 ## Getting Started
 1. Clone or Download
