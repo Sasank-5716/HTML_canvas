@@ -16,8 +16,10 @@ Toggle Gravity: Enable or disable gravity.
 
 Reset: Reinitialize all particles.
 
-## Demo
-![Gameplay](advance_particle_sysytem.png) 
+## 🖼️ Screenshots
+
+![Gameplay](advance_particle_system.png) 
+---
 
 ## Getting Started
 1. Clone or Download
@@ -27,17 +29,6 @@ git clone https://github.com/Sasank-5716/HTML_canvas
 ```bash
 cd Advance_particle_system
 ```
-
-2. HTML Setup
-Ensure your HTML includes the following elements:
-
-xml
-<canvas id="canvas"></canvas>
-<button id="gravityBtn">Toggle Gravity</button>
-<button id="resetBtn">Reset</button>
-<script src="path/to/your/script.js"></script>
-3. Script
-Place the provided JavaScript code in script.js or directly in a <script> tag after the HTML elements.
 
 ## How It Works
 Particles: Each particle has a random position, velocity, color, and radius.
@@ -52,18 +43,6 @@ Toggle Gravity: Click to turn gravity on/off.
 
 Reset: Click to regenerate all particles with new random properties.
 
-## Configuration
-You can adjust the simulation by editing the CONFIG object in the JavaScript:
-
-js
-const CONFIG = {
-    PARTICLE_COUNT: 150,   // Number of particles
-    GRAVITY: 0.25,         // Gravity force
-    ELASTICITY: 0.85,      // Bounciness on collision
-    FRICTION: 0.98,        // Friction (velocity loss)
-    MOUSE_RADIUS: 100,     // Mouse interaction radius
-    MOUSE_FORCE: 0.02      // Mouse attraction/repulsion force
-};
 ## Customization
 Colors: Particles use random HSL colors for a vibrant effect.
 
