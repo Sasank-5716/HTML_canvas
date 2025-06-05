@@ -2,7 +2,7 @@
 Welcome to Breakout Game – a colorful, modern twist on the classic paddle-and-brick arcade game, built with JavaScript and HTML5 Canvas!
 
 ## 📸 Preview
-![Breakout Game Screenshot]()
+![Breakout Game Screenshot](arkanoid.png)
 
 ## ✨ Features
 🧱 Colorful Bricks: 5 rows, 9 columns, each row with a unique color.
