@@ -38,6 +38,6 @@ drawClock(): Clears the canvas, fetches the current time in the specified time z
 setInterval(drawClock, 1000): Updates the clock every second for real-time accuracy.
 
 ## 🖼️ Example Output
-![Sample Kathmandu Digital Clock Screenshot]()
+![Sample Kathmandu Digital Clock Screenshot](digital_clock.png)
 
 Enjoy your beautiful Kathmandu digital clock! 🇳🇵🕰️
