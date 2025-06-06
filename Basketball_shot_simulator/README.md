@@ -74,7 +74,7 @@ Event Handlers: Mouse and keyboard controls for charging and shooting.
 
 
 ## 📷 Screenshot
-![Screenshot of Basketball Canvas Game]()
+![Screenshot of Basketball Canvas Game](basketball_shot_simulator.png)
 
 This project is open-source and free to use for learning and fun!
 
