@@ -15,7 +15,7 @@ Clear: Instantly clear the entire canvas.
 Touch Support: Works seamlessly on touch devices.
 
 ## Demo
-![Drawing Board]()
+![Drawing Board](drawing_board.png)
 
 ## Getting Started
 Clone or Download
