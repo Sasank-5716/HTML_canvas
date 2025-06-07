@@ -14,14 +14,18 @@ A browser-based puzzle platformer game where you manipulate gravity to navigate 
 
 ## 🚀 How to Play
 Move Left/Right:
+
 A / Left Arrow — Move left
 
 D / Right Arrow — Move right
 
 ## Change Gravity:
 Arrow Down — Gravity Down
+
 Arrow Up — Gravity Up
+
 Q — Gravity Left
+
 E — Gravity Right
 
 ## Goal:
@@ -49,7 +53,7 @@ Open index.html in your web browser.
 No additional dependencies required!
 
 ## 📁 File Structure
-text
+tree /f
 /gravity-puzzle-platformer
 │
 ├── index.html      # Main HTML file
@@ -57,7 +61,7 @@ text
 └── game.js         # JavaScript game logic
 
 ## 📷 Screenshots
-![Gameplay Screenshot](https://user-images.githubusercontentGravity switching in action!*
+![Gameplay Screenshot](gravity_puzzle_platformer.png)
 
 
 Inspired by classic gravity puzzle games.
