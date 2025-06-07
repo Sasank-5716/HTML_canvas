@@ -40,7 +40,7 @@ git clone https://github.com/Sasank-5716/HTML_canvas
 cd Gravity_puzzle_platformer
 ```
 
-Ensure the following files are in the same directory:
+## Ensure the following files are in the same directory:
 
 puzzle_platformer.html
 
@@ -51,14 +51,6 @@ puzzle_platformer.js
 Open index.html in your web browser.
 
 No additional dependencies required!
-
-## 📁 File Structure
-tree /f
-/gravity-puzzle-platformer
-│
-├── index.html      # Main HTML file
-├── styles.css      # CSS for styling
-└── game.js         # JavaScript game logic
 
 ## 📷 Screenshots
 ![Gameplay Screenshot](gravity_puzzle_platformer.png)
