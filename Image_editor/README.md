@@ -46,6 +46,15 @@ Rotation adjusts canvas size and redraws the image accordingly.
 ## 📷 Screenshots
 ![Gameplay Screenshot](image_editor.png)
 
+## Get Started
+clone repository
+```bash
+git clone https://github.com/Sasank-5716/HTML_canvas
+```
+```bash
+cd Image_editor
+```
+
 ## Usage
 Upload an Image
 Click the file input to select an image from your device.
