@@ -43,6 +43,9 @@ Press left or right arrow keys to rotate the image by 90 degrees counterclockwis
 
 Rotation adjusts canvas size and redraws the image accordingly.
 
+## 📷 Screenshots
+![Gameplay Screenshot](image_editor.png)
+
 ## Usage
 Upload an Image
 Click the file input to select an image from your device.
