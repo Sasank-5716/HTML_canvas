@@ -26,6 +26,9 @@ Move Left	Left Arrow / A	⬅️
 Move Right	Right Arrow / D	➡️
 Jump	Up Arrow / W / Space	⬆️
 
+## Screenshot
+![mario platformer](mario_platformer.png)
+
 
 # 🚀 How to Run
 ## Download or clone the repository. 📥
