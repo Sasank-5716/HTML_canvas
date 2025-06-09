@@ -18,3 +18,9 @@
 
 ## 3. Basketball shot simulator
 ![Basketball shot simulator](/Basketball_shot_simulator/basketball_shot_simulator.png)
+
+## 4. Digital clock
+![Digital clock](/Digital_clock/digital_clock.png)
+
+## 5. Drawing board
+![Drawing board](/Drawing_board/drawing_board.png)
