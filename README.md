@@ -30,3 +30,6 @@
 
 ## 7. Image editor
 ![Image editor](/Image_editor/image_editor.png)
+
+## 8. Image puzzle game
+![Image puzzle game](/Image_puzzle_game/puzzle.png)
