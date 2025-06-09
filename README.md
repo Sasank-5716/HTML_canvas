@@ -24,3 +24,9 @@
 
 ## 5. Drawing board
 ![Drawing board](/Drawing_board/drawing_board.png)
+
+## 6. Gravity puzzle platformer
+![Gravity puzzle platformer](/Gravity_puzzle_platformer/gravity_puzzle_platformer.png)
+
+## 7. Image editor
+![Image editor](/Image_editor/image_editor.png)
