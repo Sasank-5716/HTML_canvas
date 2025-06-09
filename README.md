@@ -33,3 +33,6 @@
 
 ## 8. Image puzzle game
 ![Image puzzle game](/Image_puzzle_game/puzzle.png)
+
+## 9. Mario clone
+![Mario clone](/Mario_clone/mario_platformer.png)
